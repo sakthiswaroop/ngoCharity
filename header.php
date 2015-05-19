@@ -15,7 +15,9 @@
   <div class="tp-bar">
     <div class="container">
       <div class="logo"> 
-        <a href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo.png" alt="help"></a> 
+        <a href="<?php bloginfo('url'); ?>">
+          <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" alt="logo">
+        </a> 
         <span class="slogan"> <?php bloginfo('description'); ?> </span> 
       </div>
       <!-- logo ends -->

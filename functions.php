@@ -7,6 +7,7 @@
  * @subpackage Ngo_Charity
  */
 
+/*intial setup of ngo charity*/
 function ngoCharity_setup() 
 {
     // Adds RSS feed links to <head> for posts and comments.
@@ -32,10 +33,18 @@ function ngoCharity_setup()
 
     // This theme uses its own gallery styles.
     // add_filter( 'use_default_gallery_style', '__return_false' );
+
+    //add custome header image
+    $imageArgs = array(
+        'height'        => 43,
+        'uploads'       => true,
+        'default-image' => get_template_directory_uri() . '/images/logo.png',
+    );
+    add_theme_support( 'custom-header', $imageArgs );
 }
 add_action( 'after_setup_theme', 'ngoCharity_setup' );
 
-
+/* add styles css for theme */
 function ngo_charity_styles()
 {
     //font style
@@ -65,6 +74,7 @@ function ngo_charity_styles()
 }
 add_action( 'wp_enqueue_scripts', 'ngo_charity_styles' );
 
+/* add scripts for themes */
 function ngo_charity_scripts()
 {
     // jquery
@@ -92,3 +102,30 @@ function ngo_charity_scripts()
     wp_enqueue_script( 'jquery-rev-slider');
 }
 add_action( 'wp_enqueue_scripts', 'ngo_charity_scripts' );
+
+/** adding menu on wp dashboard settings */
+// add_action( 'admin_menu', 'custom_menu' );
+
+// function custom_menu() {
+//     add_options_page( 'Options', 'Theme Settings', 'manage_options', 'my-unique-identifier', 'options_menu' );
+// }
+
+// /** Step 3. */
+// function options_menu() {
+//     if ( !current_user_can( 'manage_options' ) )  {
+//         wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+//     }
+//     echo '<div class="wrap">';
+//     echo '<p>Here is where the form would go if I actually had options.</p>';
+//     echo '</div>';
+// }
+
+/**
+ * Implement the Theme Option feature. currently disabled
+ */
+// require get_template_directory() . '/inc/admin-panel1/theme-settings.php';
+
+require get_template_directory() . '/inc/admin-panel/theme-options.php';
+
+
+
