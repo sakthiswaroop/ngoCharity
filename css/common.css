@@ -1150,8 +1150,24 @@ table {
 }
 .icon-stumbleupon {
 	width:17px;
-	height:17px;
+	height:17px;[class^="icon-"],
+[class*=" icon-"] {
+  display:inline-block;
+  width:16px;
+  height:16px;
+  *margin-right:.3em;
+  line-height:16px;
+  vertical-align:text-top;
+  background-image:url(../images/sprites.png);
+  background-position:14px 14px;
+  background-repeat:no-repeat;
+}
   background-position:0px -272px;
+}
+.icon-twitter {
+  width:20px;
+  height:20px;
+  background-position:0px -318px;
 }
 .icon-date {
 	width:10px;
@@ -1183,6 +1199,62 @@ table {
 }
 
 
+
+
+[class^="social-icon-"],
+[class*=" social-icon-"] {
+  display:inline-block;
+  width:16px;
+  height:16px;
+  *margin-right:.3em;
+  line-height:16px;
+  vertical-align:text-top;
+  background-image:url(../images/socials.png);
+  background-position:14px 14px;
+  background-repeat:no-repeat;
+}
+
+.social-icon-facebook {
+  width:28px;
+  height: 30px;
+  background-position:0px -30px;
+}
+
+.social-icon-twitter {
+  width:28px;
+  height: 30px;
+  background-position: -28px -30px;
+}
+
+.social-icon-linkedin {
+  width:28px;
+  height: 30px;
+  background-position: -56px -30px;
+}
+
+.social-icon-gplus {
+  width:28px;
+  height: 30px;
+  background-position:-81px -30px;
+}
+
+.social-icon-rss {
+  width:28px;
+  height: 30px;
+  background-position: -110px -30px;
+}
+
+.social-icon-youtube {
+  width:28px;
+  height: 30px;
+  background-position: -137px -30px;
+}
+
+.social-icon-vimeo {
+  width:28px;
+  height: 30px;
+  background-position: -166px -30px;
+}
 
 
 /*** Buttons Style

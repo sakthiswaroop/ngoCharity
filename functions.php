@@ -127,5 +127,10 @@ add_action( 'wp_enqueue_scripts', 'ngo_charity_scripts' );
 
 require get_template_directory() . '/inc/admin-panel/theme-options.php';
 
+/*
+* Implementing custom meta box
+*/
+require get_template_directory() . '/inc/custom-metabox.php';
+
 
 

@@ -38,7 +38,7 @@ $ngoCharity_options = array(
 	'gallery_cat' => '',
 	'blog_cat'=>'',
 	
-	'footer_copyright' => get_bloginfo('name'),
+	'footer_copyright' => get_bloginfo('name').' - All rights reserved',
 
 	'slider_options' => 'single_post_slider',
     'slider_cat' => '',
@@ -51,17 +51,17 @@ $ngoCharity_options = array(
 	'ngoCharity_twitter' => '',
 	'ngoCharity_gplus' => '',
 	'ngoCharity_youtube' => '',
-	'ngoCharity_pinterest' => '',
+	// 'ngoCharity_pinterest' => '',
 	'ngoCharity_linkedin' => '',
-	'ngoCharity_flickr' => '',
+	// 'ngoCharity_flickr' => '',
 	'ngoCharity_vimeo' => '',
-	'ngoCharity_stumbleupon' => '',
-	'ngoCharity_instagram' => '',
-	'ngoCharity_sound_cloud' => '',
-	'ngoCharity_skype' => '',
+	// 'ngoCharity_stumbleupon' => '',
+	// 'ngoCharity_instagram' => '',
+	// 'ngoCharity_sound_cloud' => '',
+	// 'ngoCharity_skype' => '',
 	'ngoCharity_rss' => '',
-	'ngoCharity_tumblr' => '',
-	'ngoCharity_myspace' =>'',
+	// 'ngoCharity_tumblr' => '',
+	// 'ngoCharity_myspace' =>'',
 	'show_social_header'=>'',
 	'show_social_footer'=>'',
 
@@ -511,11 +511,11 @@ function ngoCharity_theme_options_page() {
 						</td>
 						</tr>
 
-						<tr><th scope="row"><label for="ngoCharity_pinterest">Pinterest</label></th>
+						<!-- <tr><th scope="row"><label for="ngoCharity_pinterest">Pinterest</label></th>
 						<td>
 						<input id="ngoCharity_pinterest" name="ngoCharity_options[ngoCharity_pinterest]" type="text" value="<?php echo esc_url($settings['ngoCharity_pinterest']); ?>" />
 						</td>
-						</tr>
+						</tr> -->
 
 						<tr><th scope="row"><label for="ngoCharity_linkedin">Linkedin</label></th>
 						<td>
@@ -523,11 +523,11 @@ function ngoCharity_theme_options_page() {
 						</td>
 						</tr>
 
-						<tr><th scope="row"><label for="ngoCharity_flickr">Flickr</label></th>
+						<!-- <tr><th scope="row"><label for="ngoCharity_flickr">Flickr</label></th>
 						<td>
 						<input id="ngoCharity_flickr" name="ngoCharity_options[ngoCharity_flickr]" type="text" value="<?php echo esc_url($settings['ngoCharity_flickr']); ?>" />
 						</td>
-						</tr>
+						</tr> -->
 
 						<tr><th scope="row"><label for="ngoCharity_vimeo">Vimeo</label></th>
 						<td>
@@ -535,13 +535,13 @@ function ngoCharity_theme_options_page() {
 						</td>
 						</tr>
 
-						<tr><th scope="row"><label for="ngoCharity_stumbleupon">Stumbleupon</label></th>
+						<!-- <tr><th scope="row"><label for="ngoCharity_stumbleupon">Stumbleupon</label></th>
 						<td>
 						<input id="ngoCharity_stumbleupon" name="ngoCharity_options[ngoCharity_stumbleupon]" type="text" value="<?php echo esc_url($settings['ngoCharity_stumbleupon']); ?>" />
 						</td>
-						</tr>
+						</tr> -->
 
-						<tr><th scope="row"><label for="ngoCharity_instagram">Instagram</label></th>
+						<!-- <tr><th scope="row"><label for="ngoCharity_instagram">Instagram</label></th>
 						<td>
 						<input id="ngoCharity_instagram" name="ngoCharity_options[ngoCharity_instagram]" type="text" value="<?php if(isset($settings['ngoCharity_instagram'])) { echo esc_url($settings['ngoCharity_instagram']); } ?>" />
 						</td>
@@ -551,9 +551,9 @@ function ngoCharity_theme_options_page() {
 						<td>
 						<input id="ngoCharity_sound_cloud" name="ngoCharity_options[ngoCharity_sound_cloud]" type="text" value="<?php if(isset($settings['ngoCharity_sound_cloud'])) { echo esc_url($settings['ngoCharity_sound_cloud']); } ?>" />
 						</td>
-						</tr>
+						</tr> -->
 
-						<tr><th scope="row"><label for="ngoCharity_skype">Skype</label></th>
+						<!-- <tr><th scope="row"><label for="ngoCharity_skype">Skype</label></th>
 						<td>
 						<input id="ngoCharity_skype" name="ngoCharity_options[ngoCharity_skype]" type="text" value="<?php esc_attr_e($settings['ngoCharity_skype']); ?>" />
 						</td>
@@ -569,7 +569,7 @@ function ngoCharity_theme_options_page() {
 						<td>
 						<input id="ngoCharity_myspace" name="ngoCharity_options[ngoCharity_myspace]" type="text" value="<?php esc_attr_e($settings['ngoCharity_myspace']); ?>" />
 						</td>
-						</tr>
+						</tr> -->
 
 						<tr><th scope="row"><label for="ngoCharity_rss">RSS</label></th>
 						<td>
@@ -685,36 +685,36 @@ function ngoCharity_validate_options( $input ) {
 	if( isset( $input[ 'ngoCharity_youtube' ] ) ) {
 		$input[ 'ngoCharity_youtube' ] = esc_url_raw( $input[ 'ngoCharity_youtube' ] );
 	};
-	if( isset( $input[ 'ngoCharity_pinterest' ] ) ) {
-		$input[ 'ngoCharity_pinterest' ] = esc_url_raw( $input[ 'ngoCharity_pinterest' ] );
-	};
+	// if( isset( $input[ 'ngoCharity_pinterest' ] ) ) {
+	// 	$input[ 'ngoCharity_pinterest' ] = esc_url_raw( $input[ 'ngoCharity_pinterest' ] );
+	// };
 	if( isset( $input[ 'ngoCharity_linkedin' ] ) ) {
 		$input[ 'ngoCharity_linkedin' ] = esc_url_raw( $input[ 'ngoCharity_linkedin' ] );
 	};
-	if( isset( $input[ 'ngoCharity_flickr' ] ) ) {
-		$input[ 'ngoCharity_flickr' ] = esc_url_raw( $input[ 'ngoCharity_flickr' ] );
-	};
+	// if( isset( $input[ 'ngoCharity_flickr' ] ) ) {
+	// 	$input[ 'ngoCharity_flickr' ] = esc_url_raw( $input[ 'ngoCharity_flickr' ] );
+	// };
 	if( isset( $input[ 'ngoCharity_vimeo' ] ) ) {
 		$input[ 'ngoCharity_vimeo' ] = esc_url_raw( $input[ 'ngoCharity_vimeo' ] );
 	};
-	if( isset( $input[ 'ngoCharity_stumbleupon' ] ) ) {
-		$input[ 'ngoCharity_stumbleupon' ] = esc_url_raw( $input[ 'ngoCharity_stumbleupon' ] );
-	};
-	if( isset( $input[ 'ngoCharity_instagram' ] ) ) {
-		$input[ 'ngoCharity_instagram' ] = esc_url_raw( $input[ 'ngoCharity_instagram' ] );
-	};
-	if( isset( $input[ 'ngoCharity_sound_cloud' ] ) ) {
-		$input[ 'ngoCharity_sound_cloud' ] = esc_url_raw( $input[ 'ngoCharity_sound_cloud' ] );
-	};
-	if( isset( $input[ 'ngoCharity_skype' ] ) ) {
-		$input[ 'ngoCharity_skype' ] = esc_attr( $input[ 'ngoCharity_skype' ] );
-	};
-	if( isset( $input[ 'ngoCharity_tumblr' ] ) ) {
-		$input[ 'ngoCharity_tumblr' ] = esc_url_raw( $input[ 'ngoCharity_tumblr' ] );
-	};
-	if( isset( $input[ 'ngoCharity_myspace' ] ) ) {
-		$input[ 'ngoCharity_myspace' ] = esc_url_raw( $input[ 'ngoCharity_myspace' ] );
-	};
+	// if( isset( $input[ 'ngoCharity_stumbleupon' ] ) ) {
+	// 	$input[ 'ngoCharity_stumbleupon' ] = esc_url_raw( $input[ 'ngoCharity_stumbleupon' ] );
+	// };
+	// if( isset( $input[ 'ngoCharity_instagram' ] ) ) {
+	// 	$input[ 'ngoCharity_instagram' ] = esc_url_raw( $input[ 'ngoCharity_instagram' ] );
+	// };
+	// if( isset( $input[ 'ngoCharity_sound_cloud' ] ) ) {
+	// 	$input[ 'ngoCharity_sound_cloud' ] = esc_url_raw( $input[ 'ngoCharity_sound_cloud' ] );
+	// };
+	// if( isset( $input[ 'ngoCharity_skype' ] ) ) {
+	// 	$input[ 'ngoCharity_skype' ] = esc_attr( $input[ 'ngoCharity_skype' ] );
+	// };
+	// if( isset( $input[ 'ngoCharity_tumblr' ] ) ) {
+	// 	$input[ 'ngoCharity_tumblr' ] = esc_url_raw( $input[ 'ngoCharity_tumblr' ] );
+	// };
+	// if( isset( $input[ 'ngoCharity_myspace' ] ) ) {
+	// 	$input[ 'ngoCharity_myspace' ] = esc_url_raw( $input[ 'ngoCharity_myspace' ] );
+	// };
 	if( isset( $input[ 'ngoCharity_rss' ] ) ) {
 		$input[ 'ngoCharity_rss' ] = esc_url_raw( $input[ 'ngoCharity_rss' ] );
 	};
