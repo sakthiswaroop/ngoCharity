@@ -10,15 +10,35 @@
             $slider1 = get_post($ngoCharity_settings['slider1']);
             $slider2 = get_post($ngoCharity_settings['slider2']);
             $slider3 = get_post($ngoCharity_settings['slider3']);
+        // }elseif($ngoCharity_settings['slider_options'] == 'cat_post_slider'){
+        }else{
+            $sliderCat = $ngoCharity_settings['slider_cat'];
+            $noOfSlider = 3;
+            $args = array('numberposts'=> $noOfSlider);
+            if($sliderCat)
+                $args = array('numberposts'=> $noOfSlider, 'category'=> $sliderCat);
+            $posts = wp_get_recent_posts($args, OBJECT); //by default ARRAY_A
+
+            $slider1 = $posts[0];
+            $slider2 = $posts[1];
+            $slider3 = $posts[2];
         }
+
     ?>
 
     
     <div class="fullwidthbanner-container">
         <div class="fullwidthbanner">
             <ul>
+                <?php if ($slider1): ?>
                 <li data-transition="papercut" data-slotamount="15" data-masterspeed="2300" data-delay="9400">
-                    <img src="<?php bloginfo('template_directory'); ?>/images/resource/slide-1.jpg" alt="slide">
+                    <?php 
+                        if(has_post_thumbnail($slider1->ID))
+                        {
+                            echo get_the_post_thumbnail( $slider1->ID, 'full' );
+                        }
+                    ?>
+                    <!-- <img src="<?php bloginfo('template_directory'); ?>/images/resource/slide-1.jpg" alt="slide"> -->
                     <div class="caption large_yallow lfl stl"
                         data-x="left"
                         data-y="170"
@@ -34,9 +54,16 @@
                         data-easing="easeOutExpo">Sollicitudin a lacinia eufermentum etellus vestibulum libero
                     </div>
                 </li>
-                
+                <?php endif ?>
+                <?php if ($slider2): ?>
                 <li data-transition="flyin" data-slotamount="1" data-masterspeed="300">
-                    <img src="<?php bloginfo('template_directory'); ?>/images/resource/slide-2.jpg" alt="slide">
+                    <?php 
+                        if(has_post_thumbnail($slider2->ID))
+                        {
+                            echo get_the_post_thumbnail( $slider2->ID, 'full' );
+                        }
+                    ?>
+                    <!-- <img src="<?php bloginfo('template_directory'); ?>/images/resource/slide-2.jpg" alt="slide"> -->
                     <div class="caption large_grey lfl"
                         data-x="right"
                         data-y="190"
@@ -52,9 +79,16 @@
                         data-easing="easeOutExpo">Sollicitudin a lacinia eufermentum etellus vestibulum
                     </div>
                 </li>
-                
+                <?php endif ?>
+                <?php if ($slider3): ?>
                 <li data-transition="papercut" data-slotamount="1" data-masterspeed="300">
-                    <img src="<?php bloginfo('template_directory'); ?>/images/resource/slide-3.jpg" alt="slide">
+                    <?php 
+                        if(has_post_thumbnail($slider3->ID))
+                        {
+                            echo get_the_post_thumbnail( $slider3->ID, 'full' );
+                        }
+                    ?>
+                    <!-- <img src="<?php bloginfo('template_directory'); ?>/images/resource/slide-3.jpg" alt="slide"> -->
                     <div class="caption large_grey lfl"
                         data-x="center"
                         data-y="bottom"
@@ -74,6 +108,7 @@
                         data-easing="easeOutExpo">Sollicitudin a lacinia eufermentum etellus vestibulum
                     </div>
                 </li>
+                <?php endif ?>
             </ul>
       
             <div class="tp-bannertimer"></div>
@@ -155,4 +190,4 @@
       
             <div class="tp-bannertimer"></div>
         </div>
-    </div><!-- slider ends --> -->
+    </div><!-- slider ends -->
