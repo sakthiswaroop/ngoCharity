@@ -70,7 +70,39 @@ $cat_event = $ngoCharity_settings['event_cat'];
 		</div><!-- blog-info ends -->
 	</section><!-- blog-box ends -->
 <?php elseif(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): ?>
-<?php elseif(!empty($cat_testimonial) && is_category() && is_category($cat_testimonial)): ?>
+	<div class="gallery">
+	<?php 
+		if( has_post_thumbnail() ){
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
+	?>
+		<div class="image">
+	        <a href="<?php the_permalink(); ?>" data-rel="prettyPhoto[<?php the_title(); ?>]" title="<?php the_title(); ?> gallery"><img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?> gallery">
+	        	<div class="image-info">
+	            	<p><?php the_title(); ?></p>
+	        	</div>
+	        </a>
+	    </div>
+	<?php } ?>
+    </div>
+<?php //elseif(!empty($cat_testimonial) && is_category() && is_category($cat_testimonial)): ?>
 <?php else: ?>
+	<section class="blog-box">
+		<div class="blog-info clearfix">
+			<?php 
+			if( has_post_thumbnail() ){
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
+			?>
+			<div class="blog-left">
+				<figure class="snap-edits"><a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?>"></a></figure>
+			</div><!-- blog-left ends -->
+			<?php } ?>
+			<div class="blog-details">
+				<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+				<p class="date"><?php the_date('l, j F, Y'); ?></p>
+				<p><?php echo ngoCharity_excerpt(get_the_content() , $ngoCharity_settings['post_char_length']? : 400 ); ?></p>
+				<a href="<?php the_permalink(); ?>" class="readmore"><?php echo $ngoCharity_settings['post_readmore_text']? : 'Read More'; ?></a>
+			</div><!-- details end -->
+		</div><!-- blog-info ends -->
+	</section><!-- blog-box ends -->
 <?php endif; ?>
 

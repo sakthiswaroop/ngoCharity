@@ -82,7 +82,7 @@ function ngoCharity_event_details_callback()
 
     <script type="text/javascript">
         (function($){
-            $( "#datepicker" ).datepicker();
+            $( "#datepicker" ).datepicker({ dateFormat: 'dd - mm - yy' });
 
             $(window).bind('load', function(){ 
                 if($('body #in-category-<?php echo $ngoCharity_event_category; ?>').is(':checked')){
