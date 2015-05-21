@@ -1,7 +1,10 @@
 <?php
     global $ngoCharity_options;
     $ngoCharity_settings = get_option( 'ngoCharity_options', $ngoCharity_options );
-?>  
+?>
+
+    <?php get_sidebar('footer'); ?>
+
     <div class="bottom">
         <div class="container">
             <div class="bottom-left">
