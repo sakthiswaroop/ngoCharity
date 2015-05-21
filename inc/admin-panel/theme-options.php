@@ -25,7 +25,7 @@ $ngoCharity_options = array(
 	'header_text'=>__('Call us : 984187523XX','ngoCharity'),
 	// 'show_search'=> true,
 	'post_readmore_text' => __('Read More','ngoCharity'),
-	'post_char_length' => '650',
+	'post_char_length' => '400',
 	
 	'featured_post1' => '',
 	'featured_post2' => '',
