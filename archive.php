@@ -109,7 +109,7 @@ $cat_gallery = $ngoCharity_settings['gallery_cat'];
 					</ul><!-- events-list ends -->
     			</div><!-- events end -->
 			    <?php endif; ?>
-    			<?php if(!empty($cat_gallery	) && is_category() && is_category($cat_gallery	)): ?>
+    			<?php if(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): ?>
 			    </div>
 				<?php endif; ?>
 				<?php //ngoCharity_paging_nav(); ?>
