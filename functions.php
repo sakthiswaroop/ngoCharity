@@ -71,6 +71,10 @@ function ngo_charity_styles()
     wp_register_style( 'responsive-style', get_template_directory_uri() . '/css/responsive.css');
     wp_enqueue_style( 'responsive-style' );
 
+    // prettyphoto css
+    wp_register_style( 'preetyPhoto-style', get_template_directory_uri() . '/css/prettyPhoto.css');
+    wp_enqueue_style( 'preetyPhoto-style' );
+
 }
 add_action( 'wp_enqueue_scripts', 'ngo_charity_styles' );
 
@@ -84,6 +88,10 @@ function ngo_charity_scripts()
     // jquery ui
     wp_register_script( 'jquery-ui', get_template_directory_uri() . '/js/jquery-ui-1.10.3.custom.min.js', array(), null, true );
     wp_enqueue_script( 'jquery-ui');
+
+    // preetyPhoto
+    wp_register_script( 'prettyPhoto', get_template_directory_uri() . '/js/jquery.prettyPhoto.js', array(), null, true );
+    wp_enqueue_script( 'prettyPhoto');
 
     // jquery countdown
     wp_register_script( 'jquery-countdown', get_template_directory_uri() . '/js/jquery.countdown.js', array(), null, true );

@@ -8,6 +8,7 @@ get_header();
 global $ngoCharity_options;
 $ngoCharity_settings = get_option( 'ngoCharity_options', $ngoCharity_options );
 $cat_event = $ngoCharity_settings['event_cat'];
+$cat_gallery = $ngoCharity_settings['gallery_cat'];
 ?>
 
 	<div class="banner" style="background:url(<?php bloginfo('template_directory'); ?>/images/resource/banner-1.jpg);">
@@ -93,6 +94,9 @@ $cat_event = $ngoCharity_settings['event_cat'];
 			              	</div><!-- event-box ends -->
 			            </li>
 			    <?php endif; ?>
+				<?php if(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): ?>
+			    <div class="row">
+				<?php endif; ?>
 
 				<?php 
 					while ( have_posts() ) : the_post(); ?>
@@ -105,7 +109,9 @@ $cat_event = $ngoCharity_settings['event_cat'];
 					</ul><!-- events-list ends -->
     			</div><!-- events end -->
 			    <?php endif; ?>
-    			
+    			<?php if(!empty($cat_gallery	) && is_category() && is_category($cat_gallery	)): ?>
+			    </div>
+				<?php endif; ?>
 				<?php //ngoCharity_paging_nav(); ?>
 				<div class="pagination">
           			<ul>

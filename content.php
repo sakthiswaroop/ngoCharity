@@ -70,19 +70,21 @@ $cat_event = $ngoCharity_settings['event_cat'];
 		</div><!-- blog-info ends -->
 	</section><!-- blog-box ends -->
 <?php elseif(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): ?>
+	<div class="span2">
 	<div class="gallery">
 	<?php 
 		if( has_post_thumbnail() ){
 			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
 	?>
 		<div class="image">
-	        <a href="<?php the_permalink(); ?>" data-rel="prettyPhoto[<?php the_title(); ?>]" title="<?php the_title(); ?> gallery"><img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?> gallery">
+	        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?> gallery"><img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?> gallery">
 	        	<div class="image-info">
 	            	<p><?php the_title(); ?></p>
 	        	</div>
 	        </a>
 	    </div>
 	<?php } ?>
+    </div>
     </div>
 <?php //elseif(!empty($cat_testimonial) && is_category() && is_category($cat_testimonial)): ?>
 <?php else: ?>
