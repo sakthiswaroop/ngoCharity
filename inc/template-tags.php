@@ -66,7 +66,8 @@ function ngoCharity_posts_author() {
 	$image = sprintf($image, esc_html($authorName));
 
 
-	printf( __( '<div class="author-box">%1$s<div class="auth-details"><h4>Author - %2$s</h4><p>%3$s</p></div></div>' ),
+	printf( __( '<div class="author-box"><a href="%1$s">%2$s</a><div class="auth-details"><h4>Author - %3$s</h4><p>%4$s</p></div></div>' ),
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 		$image, 
 		$authorName,
 		$authorBio

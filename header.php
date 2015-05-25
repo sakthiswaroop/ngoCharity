@@ -87,7 +87,7 @@
                             single_tag_title();
 
                         elseif ( is_author() ) :
-                            printf( __( 'Author: %s', 'ngoCharity' ), '<span class="vcard">' . get_the_author() . '</span>' );
+                            printf( __( 'Author <i>(%s)</i>', 'ngoCharity' ), '<span class="vcard">' . get_the_author() . '</span>' );
 
                         elseif ( is_day() ) :
                             printf( __( 'Day: %s', 'ngoCharity' ), '<span>' . get_the_date() . '</span>' );

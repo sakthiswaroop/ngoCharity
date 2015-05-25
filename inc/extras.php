@@ -122,7 +122,7 @@ function the_breadcrumb () {
             $userdata = get_userdata( $author );
              
             // Display author name
-            echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><strong class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . 'Author: ' . $userdata->display_name . '</strong></li>';
+            echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><a href="'.$userdata->user_url.'" title="'.$userdata->display_name.'"><strong class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . $userdata->display_name . '</strong></a></li>';
          
         } else if ( get_query_var('paged') ) {
              

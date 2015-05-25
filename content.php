@@ -100,7 +100,21 @@ $cat_event = $ngoCharity_settings['event_cat'];
 			<?php } ?>
 			<div class="blog-details">
 				<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-				<p class="date"><?php the_date('l, j F, Y'); ?></p>
+				<p class="date">
+					<?php echo get_the_date('l, j F, Y'); ?> | 
+					Posted on
+					<?php
+						$categories = get_the_category();
+						$separator = ', ';
+						$output = '';
+						if($categories){
+							foreach($categories as $category) {
+								$output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator;
+							}
+						echo trim($output, $separator);
+						}
+					?> 
+				</p>
 				<p><?php echo ngoCharity_excerpt(get_the_content() , $ngoCharity_settings['post_char_length']? : 400 ); ?></p>
 				<a href="<?php the_permalink(); ?>" class="readmore"><?php echo $ngoCharity_settings['post_readmore_text']? : 'Read More'; ?></a>
 			</div><!-- details end -->
