@@ -238,3 +238,31 @@ function ngoCharity_excerpt( $ngoCharity_content , $ngoCharity_letter_count ){
 }
 
 
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ */
+function ngoCharity_widgets_init() {
+    // registering widget for right sidebar
+    register_sidebar( array(
+        'name'          => 'Right Sidebar Widget',
+        'id'            => 'widget_right',
+        'before_widget' => '<div class="widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2>',
+        'after_title'   => '</h2>',
+    ) );
+
+    // registering widget for footer
+    register_sidebar( array(
+        'name'          => 'Footer Widget',
+        'id'            => 'widget_footer',
+        'before_widget' => '<div class="widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2>',
+        'after_title'   => '</h2>',
+    ) );
+
+}
+add_action( 'widgets_init', 'ngoCharity_widgets_init' );
+
