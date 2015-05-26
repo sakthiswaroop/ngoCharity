@@ -63,11 +63,13 @@ function ngoCharity_event_details_callback()
             <td>Time:</td>
             <td>
                 <select name="ngoCharity_event_time">
+                    <option value="">Select</option>
                     <?php for($hr=1; $hr <= 12; $hr++){?>
                     <option value="<?php echo $hr ?>"  <?php selected( $ngoCharity_event_time, $hr); ?>><?php echo $hr ?></option>
                     <?php } ?>
                 </select>
                 <select name="ngoCharity_event_time_md">
+                    <option value="">Select</option>
                     <option value="AM" <?php selected( $ngoCharity_event_time_md, 'AM'); ?>>AM</option>
                     <option value="PM" <?php selected( $ngoCharity_event_time_md, 'PM'); ?>>PM</option>
                 </select>
