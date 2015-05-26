@@ -93,11 +93,15 @@ $cat_event = $ngoCharity_settings['event_cat'];
 			<?php 
 			if( has_post_thumbnail() ){
 				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
+				$image_src = esc_url($image[0]);
+			}else{
+				$image_src = get_bloginfo('template_directory').'/images/no-thumb.png';
+			}
 			?>
 			<div class="blog-left">
-				<figure class="snap-edits"><a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?>"></a></figure>
+				<figure class="snap-edits"><a href="<?php the_permalink(); ?>"><img src="<?php echo $image_src; ?>" alt="<?php the_title(); ?>"></a></figure>
 			</div><!-- blog-left ends -->
-			<?php } ?>
+			<?php //} ?>
 			<div class="blog-details">
 				<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 				<p class="date">

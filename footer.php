@@ -53,8 +53,8 @@
 <div id="dialog-search">
     <div class="heading">Search</div>
     <div class="dialog-block">
-        <form method="get" action="http://www.extracoding.com/demo/html/help/index.html" class="user-search-form">
-            <input type="text" class="input-block-level" placeholder="Enter Any Keyword">
+        <form method="get" action=" <?php echo get_search_link(); ?>" class="user-search-form">
+            <input type="text"  value="<?php echo get_search_query(); ?>" name="s" id="s" class="input-block-level" placeholder="Enter Any Keyword">
             <input type="submit" class="btn" value="Search">
         </form>
     </div>

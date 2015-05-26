@@ -83,11 +83,14 @@
                         elseif ( is_single() ) :
                             the_title();
 
-                        elseif ( is_tag() ) :
-                            single_tag_title();
-
                         elseif ( is_author() ) :
                             printf( __( 'Author <i>(%s)</i>', 'ngoCharity' ), '<span class="vcard">' . get_the_author() . '</span>' );
+
+                        elseif ( is_search() ) :
+                            echo "Search";
+
+                        elseif ( is_tag() ) :
+                            single_tag_title();
 
                         elseif ( is_day() ) :
                             printf( __( 'Day: %s', 'ngoCharity' ), '<span>' . get_the_date() . '</span>' );
