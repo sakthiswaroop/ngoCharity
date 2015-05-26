@@ -65,7 +65,7 @@ function the_breadcrumb () {
             } else {
                  
                 // Just display current page if not parents
-                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '"> ' . get_the_title() . '</strong></li>';
+                echo '<li class="item-current item-' . $post->ID . '"><a href="'.get_page_link().'">' . get_the_title() . '</a></li>';
                  
             }
              

@@ -80,6 +80,9 @@
                         if ( is_category() ) :
                             single_cat_title();
 
+                        elseif ( is_page() ) :
+                            the_title();
+
                         elseif ( is_single() ) :
                             the_title();
 
