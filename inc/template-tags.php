@@ -87,11 +87,12 @@ function ngoCharity_user_comment_box($comment, $args, $depth) {
 	$reply_link = '<a href="%s" class="reply-link">Reply</a>';
 
 
-	printf( '<li><div class="comment-box">%1$s<div class="comment-tp">%2$s</div><p>%3$s</p>%4$s</div></li>' ,
+	printf( '<li id="comment-%5$s"><div class="comment-box">%1$s<div class="comment-tp">%2$s</div><p>%3$s</p>%4$s</div></li>' ,
 			sprintf($gravatar, get_avatar( $comment)),
 			sprintf($comment_meta, esc_attr( get_comment_author() ) , esc_attr(get_comment_date()) ),
 			esc_html(get_comment_text()),
-			sprintf($reply_link, esc_url( get_comment_link( $comment->comment_ID )) )
+			sprintf($reply_link, esc_url( get_comment_link( $comment->comment_ID )) ),
+			$comment->comment_ID
 		);
 }
 endif;
