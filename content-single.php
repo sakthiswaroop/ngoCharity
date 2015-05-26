@@ -11,6 +11,11 @@ $cat_gallery = $ngoCharity_settings['gallery_cat'];
 $cat_event = $ngoCharity_settings['event_cat'];
 ?>
 
+<?php if(in_category($cat_gallery)): 
+    $gallery_url = get_post_meta( get_the_ID(), 'ngoCharity_gallery_url', true );
+    $gallery_url_html = '<a href="%s" class="readmore">Go to Gallery</a>';
+endif; ?>
+
 <section class="blog-box">
     <div class="details">
         <?php if(in_category($cat_event)): ?>
@@ -40,6 +45,9 @@ $cat_event = $ngoCharity_settings['event_cat'];
             </ul>
         <h6>
         <p><?php the_content(); ?></p>
+        <?php if(in_category($cat_gallery) && $gallery_url!= null):  
+            printf( '<h4>%s</h4>', sprintf($gallery_url_html, $gallery_url) );
+        endif; ?>
             
         <?php ngoCharity_posts_author(); ?>
     </div><!-- details end -->

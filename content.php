@@ -57,8 +57,8 @@ $cat_event = $ngoCharity_settings['event_cat'];
 		<?php } ?>
 		<div class="blog-info clearfix">
 			<div class="blog-left">
-				<figure class="snap"><img src="<?php bloginfo('template_directory'); ?>/images/resource/thumbs/snap-6.jpg" alt="snap"></figure>
-				<a href="<?php the_permalink(); ?>">Dan Clark</a>
+				<figure class="snap"><?php echo get_avatar(get_the_author_meta('ID')); ?></figure>
+				<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo get_the_author(); ?></a>
 				<!-- <p><span class="text-yallow">Ngo</span>, Annual Funding, People</p> -->
 			</div><!-- blog-left ends -->
 			<div class="blog-details">

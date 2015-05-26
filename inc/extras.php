@@ -160,7 +160,7 @@ function ngoCharity_pagination_nav( $args = array() ) {
     
     $args = wp_parse_args( 
         $args, 
-        apply_filters( 'wp_bootstrap_pagination_defaults', $defaults )
+        apply_filters( 'ngoCharity_pagination_nav_defaults', $defaults )
     );
     
     $args['range'] = (int) $args['range'] - 1;

@@ -59,11 +59,11 @@ if ( ! function_exists( 'ngoCharity_posts_author' ) ) :
  * Prints HTML with meta information for the posted date and author info for event posts
  */
 function ngoCharity_posts_author() {
-	$image = '<figure class="snap"><img src="'.get_template_directory_uri().'/images/resource/thumbs/snap-3.jpg" alt="%1$s"></figure>';
+	$image = '<figure class="snap">%1$s</figure>';
 	$authorName = get_the_author();
 	$authorBio = get_the_author_meta('description');
 
-	$image = sprintf($image, esc_html($authorName));
+	$image = sprintf($image, get_avatar(get_the_author_meta('ID')));
 
 
 	printf( __( '<div class="author-box"><a href="%1$s">%2$s</a><div class="auth-details"><h4>Author - %3$s</h4><p>%4$s</p></div></div>' ),
