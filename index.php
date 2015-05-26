@@ -4,7 +4,12 @@
  * @package NgoCharity
  */
 
-get_header(); ?>
+get_header(); 
+
+if (is_home()) {
+	get_template_part('slider');
+}
+?>
 
 <div class="container">
 	<div class="row">
