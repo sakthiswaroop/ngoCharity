@@ -72,7 +72,7 @@
             </div>
         </nav><!-- menu-bar ends -->
 
-        <?php if(!is_home()): ?>
+        <?php if( !is_front_page() ): ?>
         <div class="banner" style="background:url(<?php bloginfo('template_directory'); ?>/images/resource/banner-1.jpg);">
             <div class="container">
                 <h1>
