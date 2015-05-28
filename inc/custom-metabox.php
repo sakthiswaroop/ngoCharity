@@ -30,25 +30,26 @@ function ngoCharity_add_custom_box()
                  'high'); // $priority
 }
 
-add_action( 'admin_print_styles-post-new.php', 'event_date_picker_scripts', 11 );
-add_action( 'admin_print_styles-post.php', 'event_date_picker_scripts', 11 );
+function event_custombox_scripts($hook) {
+    if ( !('post-new.php' == $hook || 'post.php' == $hook) ) {
+        return;
+    }
 
-function event_date_picker_scripts() {
-        wp_enqueue_style( 'jquery-ui-css',get_template_directory_uri().'/lib/jquery-ui-1.11.4/jquery-ui.css');
+    wp_enqueue_style( 'datetimepicker css',get_template_directory_uri().'/lib/datetimepicker/jquery.datetimepicker.css');
 
-        wp_enqueue_script( 'external-jquery', get_template_directory_uri().'/lib/jquery-ui-1.11.4/external/jquery/jquery.js', array( 'jquery' ) );
-        wp_enqueue_script( 'jquery-ui', get_template_directory_uri().'/lib/jquery-ui-1.11.4/jquery-ui.js');
+    wp_enqueue_script( 'datetimepicker js', get_template_directory_uri().'/lib/datetimepicker/jquery.datetimepicker.js', array( 'jquery' ) );
 }
+add_action( 'admin_enqueue_scripts', 'event_custombox_scripts' );
+
 
 function ngoCharity_event_details_callback()
 { 
     global $post , $ngoCharity_event_category;
     wp_nonce_field( basename( __FILE__ ), 'ngoCharity_event_details_nonce' ); 
     
-    $ngoCharity_event_date = get_post_meta( $post->ID, 'ngoCharity_event_date', true );
-    $ngoCharity_event_time = get_post_meta( $post->ID, 'ngoCharity_event_time', true );
-    $ngoCharity_event_time_md = get_post_meta( $post->ID, 'ngoCharity_event_time_md', true );
+    $ngoCharity_event_datetime = get_post_meta( $post->ID, 'ngoCharity_event_datetime', true );
     $ngoCharity_event_venue = get_post_meta( $post->ID, 'ngoCharity_event_venue', true );
+    $ngoCharity_event_featured = get_post_meta( $post->ID, 'ngoCharity_event_featured', true );
     ?>
 
     <table>
@@ -57,34 +58,27 @@ function ngoCharity_event_details_callback()
         </tr>
         <tr>
             <td>Date:</td> 
-            <td><input type="text" id="datepicker" name="ngoCharity_event_date" placeholder="Click and select the date" value="<?php echo $ngoCharity_event_date; ?>"></td>
-        </tr>
-        <tr>
-            <td>Time:</td>
-            <td>
-                <select name="ngoCharity_event_time">
-                    <option value="">Select</option>
-                    <?php for($hr=1; $hr <= 12; $hr++){?>
-                    <option value="<?php echo $hr ?>"  <?php selected( $ngoCharity_event_time, $hr); ?>><?php echo $hr ?></option>
-                    <?php } ?>
-                </select>
-                <select name="ngoCharity_event_time_md">
-                    <option value="">Select</option>
-                    <option value="AM" <?php selected( $ngoCharity_event_time_md, 'AM'); ?>>AM</option>
-                    <option value="PM" <?php selected( $ngoCharity_event_time_md, 'PM'); ?>>PM</option>
-                </select>
-            </td>
+            <td><input type="text" id="datetimepicker" name="ngoCharity_event_datetime" placeholder="Click and select the date and time" value="<?php echo $ngoCharity_event_datetime; ?>"></td>
         </tr>
         <tr>
             <td>Venue:</td> 
             <td><input type="text" name="ngoCharity_event_venue" placeholder="Venue for event" value="<?php echo $ngoCharity_event_venue; ?>"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="checkbox" value="1" name="ngoCharity_event_featured" <?php echo ($ngoCharity_event_featured)? 'checked="checked"' : ''; ?>>
+                <strong><i>Set as Featured Event</i></strong>
+            </td>
         </tr>
     </table>
 
 
     <script type="text/javascript">
         (function($){
-            $( "#datepicker" ).datepicker({ dateFormat: 'dd - mm - yy' });
+            $('#datetimepicker').datetimepicker({
+                format:'d - m - Y | h:i a',
+                timepickerScrollbar:true
+            });
 
             $(window).bind('load', function(){ 
                 if($('body #in-category-<?php echo $ngoCharity_event_category; ?>').is(':checked')){
@@ -127,40 +121,22 @@ function ngoCharity_save_event_details( $post_id ) {
     }  
 
         //Execute this saving function
-        $old_date = get_post_meta( $post_id, 'ngoCharity_event_date', true);
-        $old_time = get_post_meta( $post_id, 'ngoCharity_event_time', true);
-        $old_time_md = get_post_meta( $post_id, 'ngoCharity_event_time_md', true);
+        $old_datetime = get_post_meta( $post_id, 'ngoCharity_event_datetime', true);
         $old_venue = get_post_meta( $post_id, 'ngoCharity_event_venue', true);
+        $old_featured = get_post_meta( $post_id, 'ngoCharity_event_featured', true);
 
-        $new_date = sanitize_text_field($_POST['ngoCharity_event_date']);
-        $new_time = sanitize_text_field($_POST['ngoCharity_event_time']);
-        $new_time_md = sanitize_text_field($_POST['ngoCharity_event_time_md']);
+        $new_datetime = sanitize_text_field($_POST['ngoCharity_event_datetime']);
         $new_venue = sanitize_text_field($_POST['ngoCharity_event_venue']);
+        $new_featured = sanitize_text_field($_POST['ngoCharity_event_featured']);
 
         
-        if ( $new_date && '' == $new_date ){
-            add_post_meta( $post_id, 'ngoCharity_event_date', $new_date );
-        }elseif ($new_date && $new_date != $old_date) {  
-            update_post_meta($post_id, 'ngoCharity_event_date', $new_date);  
-        } elseif ('' == $new_date && $old_date) {  
-            delete_post_meta($post_id,'ngoCharity_event_date', $old_date);  
-        } 
-
-        if ( $new_time && '' == $new_time ){
-            add_post_meta( $post_id, 'ngoCharity_event_time', $new_time );
-        }elseif ($new_time && $new_time != $old_time) {  
-            update_post_meta($post_id, 'ngoCharity_event_time', $new_time);  
-        } elseif ('' == $new_time && $old_time) {  
-            delete_post_meta($post_id,'ngoCharity_event_time', $old_time);  
-        } 
-
-        if ( $new_time_md && '' == $new_time_md ){
-            add_post_meta( $post_id, 'ngoCharity_event_time_md', $new_time_md );
-        }elseif ($new_time_md && $new_time_md != $old_time_md) {  
-            update_post_meta($post_id, 'ngoCharity_event_time_md', $new_time_md);  
-        } elseif ('' == $new_time_md && $old_time_md) {  
-            delete_post_meta($post_id,'ngoCharity_event_time_md', $old_time_md);  
-        } 
+        if ( $new_datetime && '' == $new_datetime ){
+            add_post_meta( $post_id, 'ngoCharity_event_datetime', $new_datetime );
+        }elseif ($new_datetime && $new_datetime != $old_datetime) {  
+            update_post_meta($post_id, 'ngoCharity_event_datetime', $new_datetime);  
+        } elseif ('' == $new_datetime && $old_datetime) {  
+            delete_post_meta($post_id,'ngoCharity_event_datetime', $old_date);  
+        }
 
         if ( $new_venue && '' == $new_venue ){
             add_post_meta( $post_id, 'ngoCharity_event_venue', $new_venue );
@@ -169,6 +145,14 @@ function ngoCharity_save_event_details( $post_id ) {
         } elseif ('' == $new_venue && $old_venue) {  
             delete_post_meta($post_id,'ngoCharity_event_venue', $old_venue);  
         } 
+
+        if ( $new_featured && '' == $new_featured ){
+            add_post_meta( $post_id, 'ngoCharity_event_featured', $new_featured );
+        }elseif ($new_featured && $new_featured != $old_featured) {  
+            update_post_meta($post_id, 'ngoCharity_event_featured', $new_featured);  
+        } elseif ('' == $new_featured && $old_featured) {  
+            delete_post_meta($post_id,'ngoCharity_event_featured', $old_featured);  
+        }
 }
 add_action('save_post', 'ngoCharity_save_event_details'); 
 
