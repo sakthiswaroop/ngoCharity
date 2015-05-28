@@ -60,23 +60,6 @@
     </div>
     <!-- dialog-block ends --> 
 </div><!-- dialog ends -->
-
-<div id="dialog-login">
-    <div class="heading">User Login</div>
-    <div class="dialog-block">
-        <form method="get" action="http://www.extracoding.com/demo/html/help/index.html" class="user-login-form">
-            <input type="text" class="input-block-level" placeholder="User Login">
-            <input type="password" class="input-block-level" placeholder="Password">
-            <div class="controls">
-                <label class="help-inline"><input type="checkbox" class="checkbox">Remeber me</label>
-                <input type="submit" class="btn pull-right" value="Sign In">
-            </div>
-        </form>
-    </div><!-- dialog-block ends --> 
-    <div class="dialog-btm">
-        Don't have an account? <a href="#">Create one now!</a>
-    </div>
-</div><!-- dialog ends -->
 <div class="dialog-overlay"></div>
 
 

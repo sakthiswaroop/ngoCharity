@@ -66,14 +66,13 @@
                 <?php wp_nav_menu(array('container'=>'', 'menu_class'=>'menu', 'menu_id'=>'')) ?>
           
             <div class="user-controls">
-                <a href="#" class="user-login"></a>
                 <a href="#" class="user-search"></a>
             </div>
             </div>
         </nav><!-- menu-bar ends -->
 
         <?php if( !is_front_page() ): ?>
-        <div class="banner" style="background:url(<?php bloginfo('template_directory'); ?>/images/resource/banner-1.jpg);">
+        <div class="banner" style="background:url(<?php bloginfo('template_directory'); ?>/images/banner.jpg);">
             <div class="container">
                 <h1>
                     <?php
@@ -141,3 +140,8 @@
             </div>
         </div><!-- banner ends -->
         <?php endif; ?>
+
+        <?php 
+        if(is_home() || is_front_page() ){
+            do_action( 'ngoCharity_slider' ); 
+        }?>
