@@ -247,7 +247,7 @@ function ngoCharity_widgets_init() {
     register_sidebar( array(
         'name'          => 'Right Sidebar Widget',
         'id'            => 'widget_right',
-        'before_widget' => '<div class="widget">',
+        'before_widget' => '<div>',
         'after_widget'  => '</div>',
         'before_title'  => '<h2>',
         'after_title'   => '</h2>',
@@ -266,3 +266,102 @@ function ngoCharity_widgets_init() {
 }
 add_action( 'widgets_init', 'ngoCharity_widgets_init' );
 
+function ngoCharity_slider_cb()
+{
+    global $ngoCharity_options, $post;
+    $ngoCharity_settings = get_option('ngoCharity_options', $ngoCharity_options);
+    if($ngoCharity_settings['show_slider'] == 'yes')
+    { 
+        if($ngoCharity_settings['slider_options'] == 'single_post_slider')
+        {
+            if(!empty($ngoCharity_settings['slider1']) || !empty($ngoCharity_settings['slider2']) || !empty($ngoCharity_settings['slider3']))
+            {
+                $sliders = array($ngoCharity_settings['slider1'],$ngoCharity_settings['slider2'],$ngoCharity_settings['slider3']);
+                $remove = array(0);
+                $sliders = array_diff($sliders, $remove); ?>
+                <div class="fullwidthbanner-container">
+                    <div class="fullwidthbanner">
+                        <ul>
+                        <?php    
+                        foreach ($sliders as $slider){
+                            $args = array ('p' => $slider);
+                            $loop = new WP_query( $args );
+                            if($loop->have_posts())
+                            { 
+                                while($loop->have_posts()) : 
+                                    $loop-> the_post();
+                                    $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full', false ); 
+                                    ?>
+                                    <li data-transition="papercut" data-slotamount="15" data-masterspeed="2300" data-delay="9400">
+                                        <img alt="<?php echo get_the_title(); ?>" src="<?php echo esc_url($image[0]); ?>">
+                                        <div class="caption large_yallow lfl stl"
+                                            data-x="left"
+                                            data-y="170"
+                                            data-speed="500"
+                                            data-start="500"
+                                            data-easing="easeOutExpo"><?php echo $post->post_title; ?>
+                                        </div>
+                                        <div class="caption medium_grey lfr"
+                                            data-x="left"
+                                            data-y="236"
+                                            data-speed="500"
+                                            data-start="800"
+                                            data-easing="easeOutExpo">Sample description
+                                        </div>
+                                    </li>
+                            <?php endwhile;
+                            }
+                        }?>
+                        </ul>
+                    </div>
+                </div><?php
+            }
+        }
+        elseif($ngoCharity_settings['slider_options'] == 'cat_post_slider')
+        {
+        ?>
+            <div class="fullwidthbanner-container">
+                <div class="fullwidthbanner">
+                    <ul>
+                    <?php
+                    $loop = new WP_Query(array(
+                        'cat' => $ngoCharity_settings['slider_cat'],
+                        'posts_per_page' => 3
+                    ));
+                    if($loop->have_posts()){ 
+                        while($loop->have_posts()) : 
+                            $loop-> the_post(); 
+                            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full', false ); 
+                            ?>
+                            <li data-transition="papercut" data-slotamount="15" data-masterspeed="2300" data-delay="9400">
+                                <img alt="<?php echo get_the_title(); ?>" src="<?php echo esc_url($image[0]); ?>">
+                                <div class="caption large_yallow lfl stl"
+                                    data-x="left"
+                                    data-y="170"
+                                    data-speed="500"
+                                    data-start="500"
+                                    data-easing="easeOutExpo"><?php the_title(); ?>
+                                </div>
+                                <div class="caption medium_grey lfr"
+                                    data-x="left"
+                                    data-y="236"
+                                    data-speed="500"
+                                    data-start="800"
+                                    data-easing="easeOutExpo">Sample description
+                                </div>
+                            </li><?php 
+                        endwhile;
+                    }
+                    ?>
+                    </ul>
+                </div>
+            </div>
+        <?php
+        }
+        else{
+
+        }
+    }
+    wp_reset_query();
+}
+add_action('ngoCharity_slider','ngoCharity_slider_cb', 10);
