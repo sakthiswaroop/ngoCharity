@@ -36,11 +36,7 @@ $cat_event = $ngoCharity_settings['event_cat'];
         	<div class="detail">
           		<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
           		<ul>
-            		<li>
-            			<span><i class="icon-date"></i><?php echo $event_date; ?></span>
-            			<span><?php echo $event_time." ". $event_time_md; ?></span>
-            		</li>
-            		<li><span><i class="icon-location"></i><?php echo $event_venue; ?></span></li>
+            		<?php ngoCharity_event_post_meta();  ?>
           		</ul>
         	</div>
       	</div><!-- event-box ends -->

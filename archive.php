@@ -13,28 +13,42 @@ $cat_gallery = $ngoCharity_settings['gallery_cat'];
 	<div class="container">
     	<div class="row">
       		<div class="span9">
-			<?php if ( have_posts() ) : ?>
-
-				<?php if(!empty($cat_event) && is_category() && is_category($cat_event)): ?>
+      		<?php if(!empty($cat_event) && is_category() && is_category($cat_event)): ?>
 				<div class="events">
-			        <h2>Upcoming <strong>Events</strong></h2>
+			        <!-- <h2>Upcoming <strong>Events</strong></h2> -->
 			        <ul class="events-list">
-			        	<li>
-			              	<div class="event-box event-box-featured">
-			                	<figure class="image">
-			                  		<a href="events-detail.html"><img src="<?php bloginfo('template_directory'); ?>/images/resource/pic-1.jpg" alt="pic"></a>
-			                	</figure>
-			                	<div class="detail">
-			                  		<h5><a href="events-detail.html">Et et odio aenean odio facilisis ac turpis urna porta et!</a></h5>
-			                  		<ul>
-			                    		<li><span><i class="icon-date"></i>25 - 02 - 2013</span><span>08:00am - 12:00pm</span></li>
-			                    		<li><span><i class="icon-location"></i>Washington, United States</span></li>
-			                  		</ul>
-			                	</div>
-			              	</div><!-- event-box ends -->
-			            </li>
-			    <?php endif; ?>
-				<?php if(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): ?>
+			        	<?php 
+							query_posts('posts_per_page=1&meta_key=ngoCharity_event_featured&meta_value=1&order=DESC&cat='.$cat_event);
+							if ( have_posts() ) :
+								while ( have_posts() ) : the_post(); 
+								?>
+						        	<li>
+						              	<div class="event-box event-box-featured">
+						              	<?php 
+											if( has_post_thumbnail() ){
+												$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
+										?>
+						                	<figure class="image">
+						                  		<a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?>"></a>
+						                	</figure>
+						                <?php } ?>
+						                	<div class="detail">
+						                  		<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+						                  		<ul><?php ngoCharity_event_post_meta(); ?></ul>
+						                	</div>
+						              	</div><!-- event-box ends -->
+						            </li>
+								<?php endwhile; 
+							endif;
+							wp_reset_query();	
+							?>
+
+		    <?php endif; ?>
+
+			<?php if ( have_posts() ) : ?>
+				<?php if(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): 
+					query_posts('posts_per_page=12&cat='.$cat_gallery);
+				?>
 			    <div class="row">
 				<?php endif; ?>
 

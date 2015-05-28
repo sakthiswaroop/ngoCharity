@@ -33,22 +33,17 @@ if ( ! function_exists( 'ngoCharity_event_post_meta' ) ) :
  * Prints HTML with meta information for the posted date and author info for event posts
  */
 function ngoCharity_event_post_meta() {
-	$event_date = get_post_meta( get_the_ID(), 'ngoCharity_event_date', true );
-	$event_time = get_post_meta( get_the_ID(), 'ngoCharity_event_time', true ).' '. get_post_meta( get_the_ID(), 'ngoCharity_event_time_md', true );
+	$event_datetime = get_post_meta( get_the_ID(), 'ngoCharity_event_datetime', true );
 	$event_venue = get_post_meta( get_the_ID(), 'ngoCharity_event_venue', true );
 
 	$date_string = '<span><i class="icon-date"></i>%1$s</span>';
-	$date_string = sprintf($date_string, esc_html($event_date));
-	
-	$time_string = '<span>%1$s</span>';
-	$time_string = sprintf($time_string, esc_html($event_time));
+	$date_string = sprintf($date_string, esc_html($event_datetime));
 
 	$venue_string = '<span><i class="icon-location"></i>%1$s</span>';
 	$venue_string = sprintf($venue_string, esc_html($event_venue));
 
-	printf( __( '<li> %1$s | %2$s</li> <li>%3$s</li>' ),
-		$date_string, 
-		$time_string,
+	printf( __( '<li> %1$s</li> <li>%2$s</li>' ),
+		$date_string,
 		$venue_string
 	);
 }
