@@ -399,3 +399,54 @@ function ngoCharity_slider_cb()
     wp_reset_query();
 }
 add_action('ngoCharity_slider','ngoCharity_slider_cb', 10);
+
+/*
+*Social Icons template
+*/
+function ngoCharity_social_links($area='')
+{
+    global $ngoCharity_options, $post;
+    $ngoCharity_settings = get_option('ngoCharity_options', $ngoCharity_options);
+    if($area=='header')
+    {
+        $show = $ngoCharity_settings['show_social_header'];
+    }
+    if($area=='footer')
+    {
+        $show = $ngoCharity_settings['show_social_footer'];
+    }
+    if(!$show)
+    { ?>
+    
+    <?php if($area=='header') echo'<div class="tp-right">'; ?>
+
+    <div class="social-links">
+        <ul>
+            <?php if($ngoCharity_settings['ngoCharity_facebook']) { ?>
+            <li><a href="<?php echo $ngoCharity_settings['ngoCharity_facebook']; ?>" class="social-icon-facebook tooltip" title="facebook"></a></li>
+            <?php } ?>
+            <?php if($ngoCharity_settings['ngoCharity_twitter']) { ?>
+            <li><a href="<?php echo $ngoCharity_settings['ngoCharity_twitter']; ?>" class="social-icon-twitter tooltip" title="twitter"></a></li>
+            <?php } ?>
+            <?php if($ngoCharity_settings['ngoCharity_gplus']) { ?>
+            <li><a href="<?php echo $ngoCharity_settings['ngoCharity_gplus']; ?>" class="social-icon-gplus tooltip" title="gplus"></a></li>
+            <?php } ?>
+            <?php if($ngoCharity_settings['ngoCharity_youtube']) { ?>
+            <li><a href="<?php echo $ngoCharity_settings['ngoCharity_youtube']; ?>" class="social-icon-youtube tooltip" title="youtube"></a></li>
+            <?php } ?>
+            <?php if($ngoCharity_settings['ngoCharity_linkedin']) { ?>
+            <li><a href="<?php echo $ngoCharity_settings['ngoCharity_linkedin']; ?>" class="social-icon-linkedin tooltip" title="linkedin"></a></li>
+            <?php } ?>
+            <?php if($ngoCharity_settings['ngoCharity_rss']) { ?>
+            <li><a href="<?php echo $ngoCharity_settings['ngoCharity_rss']; ?>" class="social-icon-rss tooltip" title="rss"></a></li>
+            <?php } ?>
+            <?php if($ngoCharity_settings['ngoCharity_vimeo']) { ?>
+            <li><a href="<?php echo $ngoCharity_settings['ngoCharity_vimeo']; ?>" class="social-icon-vimeo tooltip" title="vimeo"></a></li>
+            <?php } ?>
+        </ul>
+    </div>
+    <?php if($area=='header') echo'</div>'; ?>
+    <?php  }
+}
+
+                
