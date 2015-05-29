@@ -21,6 +21,7 @@ $cat_gallery = $ngoCharity_settings['gallery_cat'];
 							query_posts('posts_per_page=1&meta_key=ngoCharity_event_featured&meta_value=1&order=DESC&cat='.$cat_event);
 							if ( have_posts() ) :
 								while ( have_posts() ) : the_post(); 
+								$featuredId = get_the_ID();
 								?>
 						        	<li>
 						              	<div class="event-box event-box-featured">
@@ -42,13 +43,24 @@ $cat_gallery = $ngoCharity_settings['gallery_cat'];
 							endif;
 							wp_reset_query();	
 							?>
-
 		    <?php endif; ?>
 
-			<?php if ( have_posts() ) : ?>
-				<?php if(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): 
-					query_posts('posts_per_page=12&cat='.$cat_gallery);
+		    <?php if(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): 
+					query_posts('posts_per_page=6&cat='.$cat_gallery.'&paged='.$paged);
+				endif;
+				if(!empty($cat_event) && is_category() && is_category($cat_event)): 
+					$featuredId = (isset($featuredId))? $featuredId : 0;
+					$args = array(
+						'post__not_in' => array($featuredId),
+						'cat' => $cat_event,
+						'posts_per_page'=> 3,
+						'paged' => $paged
+					);
+					query_posts($args);
+				endif;
 				?>
+			<?php if ( have_posts() ) : ?>
+				<?php if(!empty($cat_gallery) && is_category() && is_category($cat_gallery)): ?>
 			    <div class="row">
 				<?php endif; ?>
 
@@ -75,7 +87,7 @@ $cat_gallery = $ngoCharity_settings['gallery_cat'];
 				?>
 			<?php else : ?>
 				<?php get_template_part( 'content', 'none' ); ?>
-			<?php endif; ?>
+			<?php endif; wp_reset_query(); ?>
     		</div>
 			
 			<div class="span3">
