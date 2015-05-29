@@ -36,7 +36,7 @@ function ngoCharity_event_post_meta() {
 	$event_datetime = get_post_meta( get_the_ID(), 'ngoCharity_event_datetime', true );
 	$event_venue = get_post_meta( get_the_ID(), 'ngoCharity_event_venue', true );
 
-	$date_string = '<span><i class="icon-date"></i>%1$s</span>';
+	$date_string = '<span><i class="icon-date"></i>%1$s</span><span><em>(Nepal Standard Time)</em></span>';
 	$date_string = sprintf($date_string, esc_html($event_datetime));
 
 	$venue_string = '<span><i class="icon-location"></i>%1$s</span>';
