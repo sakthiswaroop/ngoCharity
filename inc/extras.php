@@ -237,35 +237,9 @@ function ngoCharity_excerpt( $ngoCharity_content , $ngoCharity_letter_count ){
 	return $ngoCharity_excerpt;
 }
 
-
-/**
- * Register our sidebars and widgetized areas.
- *
- */
-function ngoCharity_widgets_init() {
-    // registering widget for right sidebar
-    register_sidebar( array(
-        'name'          => 'Right Sidebar Widget',
-        'id'            => 'widget_right',
-        'before_widget' => '<div>',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2>',
-        'after_title'   => '</h2>',
-    ) );
-
-    // registering widget for footer
-    register_sidebar( array(
-        'name'          => 'Footer Widget',
-        'id'            => 'widget_footer',
-        'before_widget' => '<div class="widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2>',
-        'after_title'   => '</h2>',
-    ) );
-
-}
-add_action( 'widgets_init', 'ngoCharity_widgets_init' );
-
+/*
+*Front page slider
+*/
 function ngoCharity_slider_cb()
 {
     global $ngoCharity_options, $post;
@@ -356,6 +330,66 @@ function ngoCharity_slider_cb()
                     </ul>
                 </div>
             </div>
+            <script type="text/javascript">
+                var tpj=jQuery;
+                tpj.noConflict();
+                tpj(document).ready(function() {
+
+                if (tpj.fn.cssOriginal!=undefined)
+                    tpj.fn.css = tpj.fn.cssOriginal;
+
+                    tpj('.fullwidthbanner').revolution(
+                    {
+                        delay:9000,
+                        startwidth:1170,
+                        startheight:550,
+
+                        onHoverStop:"on",           // Stop Banner Timet at Hover on Slide on/off
+
+                        thumbWidth:100,             // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+                        thumbHeight:50,
+                        thumbAmount:3,
+
+                        hideThumbs:0,
+                        navigationType:"none",        // bullet, thumb, none
+                        navigationArrows:"solo",        // nexttobullets, solo (old name verticalcentered), none
+
+                        navigationStyle:"round",        // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+
+
+                        navigationHAlign:"center",        // Vertical Align top,center,bottom
+                        navigationVAlign:"top",         // Horizontal Align left,center,right
+                        navigationHOffset:0,
+                        navigationVOffset:20,
+
+                        soloArrowLeftHalign:"left",
+                        soloArrowLeftValign:"center",
+                        soloArrowLeftHOffset:20,
+                        soloArrowLeftVOffset:0,
+
+                        soloArrowRightHalign:"right",
+                        soloArrowRightValign:"center",
+                        soloArrowRightHOffset:20,
+                        soloArrowRightVOffset:0,
+
+                        touchenabled:"on",            // Enable Swipe Function : on/off
+
+
+
+                        stopAtSlide:-1,             // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                        stopAfterLoops:-1,            // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+
+                        hideCaptionAtLimit:0,         // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+                        hideAllCaptionAtLilmit:0,       // Hide all The Captions if Width of Browser is less then this value
+                        hideSliderAtLimit:0,          // Hide the whole slider, and stop also functions if Width of Browser is less than this value
+
+
+                        fullWidth:"on",
+                        shadow:0                //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
+
+                    });
+                });
+            </script>
         <?php
         }
         else{
