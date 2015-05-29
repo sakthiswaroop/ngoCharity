@@ -6,16 +6,21 @@ Template Name: Front Page
 */
 
 get_header();
-get_template_part( 'slider' );
 global $post;
 ?>
 	<div class="container">
     	<div class="row">
-    		<?php while ( have_posts() ) : the_post(); ?>
+    		<div class="span9">
+    			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', 'page' ); ?>
+					<?php the_content(); ?>
 
-			<?php endwhile; // end of the loop. ?>
+				<?php endwhile; // end of the loop. ?>
+    		</div>
+    		<div class="span3">
+    			<?php get_sidebar('right'); ?>
+    		</div>
+    		
 		</div>
   	</div><!-- /container --> 
 <?php get_footer(); ?>
