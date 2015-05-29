@@ -19,7 +19,7 @@ $cat_event = $ngoCharity_settings['event_cat'];
       	<div class="event-box">
         	<?php 
 				if( has_post_thumbnail() ){
-					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
+					$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'featured-thumbnail', false ); 
 			?>
         	<figure class="image">
           		<a href="<?php the_permalink(); ?>">
@@ -45,7 +45,7 @@ $cat_event = $ngoCharity_settings['event_cat'];
 	<section class="blog-box">
 		<?php 
 			if( has_post_thumbnail() ){
-				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'featured-thumbnail', false ); 
 		?>
 		<div class="image">
 			<a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?>"></a>
@@ -70,7 +70,7 @@ $cat_event = $ngoCharity_settings['event_cat'];
 	<div class="gallery">
 	<?php 
 		if( has_post_thumbnail() ){
-			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'featured-thumbnail', false ); 
 	?>
 		<div class="image">
 	        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?> gallery"><img src="<?php echo esc_url($image[0]); ?>" alt="<?php the_title(); ?> gallery">
@@ -88,7 +88,7 @@ $cat_event = $ngoCharity_settings['event_cat'];
 		<div class="blog-info clearfix">
 			<?php 
 			if( has_post_thumbnail() ){
-				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'featured-thumbnail', false ); 
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'featured-thumbnail', false ); 
 				$image_src = esc_url($image[0]);
 			}else{
 				$image_src = get_bloginfo('template_directory').'/images/no-thumb.png';

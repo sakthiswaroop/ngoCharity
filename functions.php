@@ -41,6 +41,9 @@ function ngoCharity_setup()
         'default-image' => get_template_directory_uri() . '/images/logo.png',
     );
     add_theme_support( 'custom-header', $imageArgs );
+
+    //enable shortcode
+    add_filter('widget_text', 'do_shortcode');
 }
 add_action( 'after_setup_theme', 'ngoCharity_setup' );
 
@@ -82,9 +85,9 @@ add_action( 'wp_enqueue_scripts', 'ngo_charity_styles' );
 function ngo_charity_scripts()
 {
     // jquery
-    wp_register_script( 'jquery-script', get_template_directory_uri() . '/js/jquery-1.10.2.min.js', array(), null, true );
+    wp_register_script( 'jquery-script', get_template_directory_uri() . '/js/jquery-1.10.2.min.js', array(), null, false );
     wp_enqueue_script( 'jquery-script');
-
+    
     // jquery ui
     wp_register_script( 'jquery-ui', get_template_directory_uri() . '/js/jquery-ui-1.10.3.custom.min.js', array(), null, true );
     wp_enqueue_script( 'jquery-ui');
@@ -111,27 +114,9 @@ function ngo_charity_scripts()
 }
 add_action( 'wp_enqueue_scripts', 'ngo_charity_scripts' );
 
-/** adding menu on wp dashboard settings */
-// add_action( 'admin_menu', 'custom_menu' );
-
-// function custom_menu() {
-//     add_options_page( 'Options', 'Theme Settings', 'manage_options', 'my-unique-identifier', 'options_menu' );
-// }
-
-// /** Step 3. */
-// function options_menu() {
-//     if ( !current_user_can( 'manage_options' ) )  {
-//         wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-//     }
-//     echo '<div class="wrap">';
-//     echo '<p>Here is where the form would go if I actually had options.</p>';
-//     echo '</div>';
-// }
-
 /**
- * Implement the Theme Option feature. currently disabled
- */
-// require get_template_directory() . '/inc/admin-panel1/theme-settings.php';
+* Implement the Theme Option feature.
+*/
 
 require get_template_directory() . '/inc/admin-panel/theme-options.php';
 
@@ -149,6 +134,48 @@ require get_template_directory() . '/inc/extras.php';
 * Custom template tags for this theme
 */
 require get_template_directory() . '/inc/template-tags.php';
+
+/*
+* Custom widgets
+*/
+require get_template_directory() . '/widgets/custom-widget.php';
  
+/*
+* Custom Page builder tweaks
+*/
+require get_template_directory() . '/inc/page-builder.php';
+
+/**
+ *TGM Plugin activation.
+ */
+require_once dirname( __FILE__ ) . '/plugins/class-tgm-plugin-activation.php';
+ 
+add_action( 'tgmpa_register', 'ngoCharity_recommend_plugin' );
+function ngoCharity_recommend_plugin() {
+ 
+    $plugins = array(
+        array(
+            'name'               => 'Page Builder by SiteOrigin',
+            'slug'               => 'siteorigin-panels',
+            'required'           => true,
+        ),
+        array(
+            'name'               => 'Newsletter - Manage your site subscriptions with ease',
+            'slug'               => 'newsletter',
+            'required'           => true,
+        ),
+        array(
+            'name'               => 'Php code widget',
+            'slug'               => 'php-code-widget',
+            'required'           => true,
+        ), 
+        array(
+            'name'               => 'Visual Editor - Black Studio Tiny Mice Widget',
+            'slug'               => 'black-studio-tinymce-widget',
+            'required'           => true,
+        ),          
+    );
+    tgmpa( $plugins);
+}
 ?>
 
