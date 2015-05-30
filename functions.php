@@ -78,6 +78,10 @@ function ngo_charity_styles()
     wp_register_style( 'preetyPhoto-style', get_template_directory_uri() . '/css/prettyPhoto.css');
     wp_enqueue_style( 'preetyPhoto-style' );
 
+    //themes styles
+    wp_register_style( 'ngoCharity', get_stylesheet_uri());
+    wp_enqueue_style( 'ngoCharity' );
+
 }
 add_action( 'wp_enqueue_scripts', 'ngo_charity_styles' );
 
