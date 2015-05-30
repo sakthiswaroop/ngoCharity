@@ -149,6 +149,11 @@ require get_template_directory() . '/widgets/custom-widget.php';
 */
 require get_template_directory() . '/inc/page-builder.php';
 
+/*
+* Contact Us Page
+*/
+require get_template_directory() . '/inc/contact-us.php';
+
 /**
  *TGM Plugin activation.
  */
