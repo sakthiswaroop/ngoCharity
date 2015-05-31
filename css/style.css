@@ -792,9 +792,10 @@ iframe {
 }
 
 .author-box {
-	padding:30px;
+	padding:15px;
 	border:1px solid #eaeaea;
 	background:#eeeeee;
+	border-radius: 5px;
 }
 .snap {
 	width:78px;
@@ -815,9 +816,10 @@ iframe {
 }
 .author-box .snap {
 	float:left;
+	margin-right: 10px;
 }
 .author-box .auth-details {
-	margin-left:100px;
+	/*margin-left:100px;*/
 	line-height:22px;
 }
 .author-box .auth-details p {
