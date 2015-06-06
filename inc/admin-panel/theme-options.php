@@ -338,8 +338,9 @@ function ngoCharity_theme_options_page() {
 						<tr>
 							<th scope="row"><label for="footer_copyright"><?php _e('Footer Copyright Text','ngoCharity'); ?></label></th>
 							<td>
-								<input id="footer_copyright" name="ngoCharity_options[footer_copyright]" type="text" value="<?php esc_attr_e($settings['footer_copyright']); ?>" />
-							</td>
+								<textarea id="footer_copyright" name="ngoCharity_options[footer_copyright]" rows="5" cols="30" placeholder="<?php _e('All rights reserved.','ngoCharity')?>"><?php echo wp_kses_post($settings['footer_copyright']); ?></textarea><br />
+			                    <em class="f13"><?php _e('Html content allowed','ngoCharity'); ?></em> 
+		                    </td>
 						</tr>
 					</table>
 				</div>
@@ -629,7 +630,7 @@ function ngoCharity_validate_options( $input ) {
     $input['gallery_cat'] = wp_filter_nohtml_kses( $input['gallery_cat'] );
     $input['blog_cat'] = wp_filter_nohtml_kses( $input['blog_cat'] );
     $input['slider_cat'] = wp_filter_nohtml_kses( $input['slider_cat'] );
-    $input['footer_copyright'] = sanitize_text_field( $input['footer_copyright'] );
+    // $input['footer_copyright'] = sanitize_text_field( $input['footer_copyright'] );
     $input['post_readmore_text'] = sanitize_text_field( $input['post_readmore_text'] );
 
     $input['notification_text'] = sanitize_text_field( $input['notification_text'] );
@@ -721,6 +722,9 @@ function ngoCharity_validate_options( $input ) {
 
     if( isset( $input[ 'header_text' ] ) ) {
 	   $input[ 'header_text' ] = wp_kses_post( $input[ 'header_text' ] );
+    }
+    if( isset( $input[ 'footer_copyright' ] ) ) {
+	   $input[ 'footer_copyright' ] = wp_kses_post( $input[ 'footer_copyright' ] );
     }
     
 	return $input;

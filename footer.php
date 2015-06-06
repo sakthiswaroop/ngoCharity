@@ -8,13 +8,7 @@
     <div class="bottom">
         <div class="container">
             <div class="bottom-left">
-                <p>&copy;2013 <?php echo $ngoCharity_settings['footer_copyright']; ?></p>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Environment</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#">Site Map</a></li>
-                </ul>
+                <p><?php echo $ngoCharity_settings['footer_copyright']; ?></p>
             </div>
             <?php if(function_exists('ngoCharity_social_links')) ngoCharity_social_links('footer'); ?>
         </div>
