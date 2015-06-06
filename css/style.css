@@ -7,7 +7,6 @@
 .tp-bar {
 	padding:20px 0;
 	background-color:#f2b636;
-	background-image:url(../images/tp-bg.png);
 	background-position:top center;
 	background-repeat:no-repeat;
 	position:relative;
@@ -46,12 +45,12 @@
 .logo .slogan {
 	padding-left:10px;
 	margin-left:5px;
-	line-height:43px;
+	line-height:45px;
 	color:#fff;
 	display:block;
 	float:left;
 	
-	background:url(../images/sprites.png) 0px 11px no-repeat;
+	background:url(../images/sprites.png) 0px 13px no-repeat;
 }
 
 .tp-right {
@@ -579,6 +578,7 @@ span.points {
 .posts-list li img {
 	float:left;
 	display:block;
+	border-radius: 5px;
 }
 .posts-list li .post-text {
 	margin-left:70px;
