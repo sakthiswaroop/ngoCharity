@@ -272,13 +272,6 @@ function ngoCharity_slider_cb()
                                             data-start="500"
                                             data-easing="easeOutExpo"><?php echo $post->post_title; ?>
                                         </div>
-                                        <div class="caption medium_grey lfr"
-                                            data-x="left"
-                                            data-y="236"
-                                            data-speed="500"
-                                            data-start="800"
-                                            data-easing="easeOutExpo">Sample description
-                                        </div>
                                     </li>
                             <?php endwhile;
                             }
@@ -312,13 +305,6 @@ function ngoCharity_slider_cb()
                                     data-speed="500"
                                     data-start="500"
                                     data-easing="easeOutExpo"><?php the_title(); ?>
-                                </div>
-                                <div class="caption medium_grey lfr"
-                                    data-x="left"
-                                    data-y="236"
-                                    data-speed="500"
-                                    data-start="800"
-                                    data-easing="easeOutExpo">Sample description
                                 </div>
                             </li><?php 
                         endwhile;
