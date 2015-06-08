@@ -65,6 +65,9 @@ $ngoCharity_options = array(
 	'show_social_header'=>'',
 	'show_social_footer'=>'',
 
+	'contactEmai'=> '',
+	'contactGoogleMap' => '',
+
 	'notification_text'=>'',
 	'show_notification' => 'yes',
 
@@ -188,9 +191,10 @@ function ngoCharity_theme_options_page() {
 		<?php // Shows all the tabs of the theme options ?>
 		<div class="nav-tab-wrapper">
 		<a id="options-group-1-tab" class="nav-tab nav-tab-active" href="#options-group-1"><?php _e('Basic Settings','ngoCharity'); ?></a>
-		<a id="options-group-3-tab" class="nav-tab" href="#options-group-2"><?php _e('Slider Settings','ngoCharity'); ?></a>
-		<a id="options-group-5-tab" class="nav-tab" href="#options-group-3"><?php _e('Social Links','ngoCharity'); ?></a>
-		<a id="options-group-6-tab" class="nav-tab" href="#options-group-4"><?php _e('Miscellaneous','ngoCharity'); ?></a>
+		<a id="options-group-2-tab" class="nav-tab" href="#options-group-2"><?php _e('Slider Settings','ngoCharity'); ?></a>
+		<a id="options-group-3-tab" class="nav-tab" href="#options-group-3"><?php _e('Social Links','ngoCharity'); ?></a>
+		<a id="options-group-4-tab" class="nav-tab" href="#options-group-4"><?php _e('Contact Us','ngoCharity'); ?></a>
+		<a id="options-group-5-tab" class="nav-tab" href="#options-group-5"><?php _e('Miscellaneous','ngoCharity'); ?></a>
 		</div>
 
 		<div id="optionsframework-metabox" class="metabox-holder clearfix">
@@ -580,8 +584,28 @@ function ngoCharity_theme_options_page() {
 					</table>
 				</div>
 
-				<!-- Miscellaneous-->
+				<!-- Contacts Email Server-->
 				<div id="options-group-4" class="group" style="display: none;">
+				<h3><?php _e('Configuration for Contact Us Page','ngoCharity'); ?></h3>
+					<table class="form-table">
+						<tr>
+							<th scope="row"><label for="google_map_iframe"><?php _e('Google Map Iframe','ngoCharity'); ?></label></th>
+							<td>
+								<textarea id="google_map_iframe" name="ngoCharity_options[contactGoogleMap]" rows="5" cols="30" placeholder="<?php _e('Copy and paste google map ifrmae embed code','ngoCharity')?>"><?php echo wp_kses_post($settings['contactGoogleMap']); ?></textarea><br />
+			                    <em class="f13"><?php _e('Leave blank if you don\'t want to show. ','ngoCharity'); ?></em> 
+		                    </td>
+	                    </tr>
+	                    <tr>
+	                    	<th scope="row"><label for="ngoCharity_contactEmail">Contact Email Address</label></th>
+							<td>
+								<input id="ngoCharity_contactEmail" name="ngoCharity_options[contactEmail]" type="email" value="<?php echo esc_url($settings['contactEmail']); ?>" />
+							</td>
+	                    </tr>
+					</table>
+				</div>
+
+				<!-- Miscellaneous-->
+				<div id="options-group-5" class="group" style="display: none;">
 				<h3><?php _e('Miscellaneous Settings for your theme','ngoCharity'); ?></h3>
 					<table class="form-table">
 						<tr>
@@ -634,6 +658,8 @@ function ngoCharity_validate_options( $input ) {
     $input['post_readmore_text'] = sanitize_text_field( $input['post_readmore_text'] );
 
     $input['notification_text'] = sanitize_text_field( $input['notification_text'] );
+    $input['contactGoogleMap'] = sanitize_text_field( $input['contactGoogleMap'] );
+    $input['contactEmail'] = sanitize_email( $input['contactEmail'] );
 
 
     // We select the previous value of the field, to restore it in case an invalid entry has been given
