@@ -40,8 +40,14 @@
             </div>
         </nav><!-- menu-bar ends -->
 
-        <?php if( !is_front_page() ): ?>
-        <div class="banner" style="background:url(<?php bloginfo('template_directory'); ?>/images/banner.jpg);">
+        <?php if( !(is_home() || is_front_page())  ): ?>
+            <?php if(is_page() && has_post_thumbnail() ){
+                $image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'featured-thumbnail', false );
+                $url = esc_url($image[0]);
+            }else{
+                $url = get_bloginfo('template_directory').'/images/banner.jpg';
+            } ?>
+        <div class="banner" style="background:url(<?php echo $url; ?>);">
             <div class="container">
                 <h1>
                     <?php
