@@ -515,66 +515,16 @@ function ngoCharity_theme_options_page() {
 						<input id="ngoCharity_youtube" name="ngoCharity_options[ngoCharity_youtube]" type="text" value="<?php echo esc_url($settings['ngoCharity_youtube']); ?>" />
 						</td>
 						</tr>
-
-						<!-- <tr><th scope="row"><label for="ngoCharity_pinterest">Pinterest</label></th>
-						<td>
-						<input id="ngoCharity_pinterest" name="ngoCharity_options[ngoCharity_pinterest]" type="text" value="<?php echo esc_url($settings['ngoCharity_pinterest']); ?>" />
-						</td>
-						</tr> -->
-
 						<tr><th scope="row"><label for="ngoCharity_linkedin">Linkedin</label></th>
 						<td>
 						<input id="ngoCharity_linkedin" name="ngoCharity_options[ngoCharity_linkedin]" type="text" value="<?php echo esc_url($settings['ngoCharity_linkedin']); ?>" />
 						</td>
 						</tr>
-
-						<!-- <tr><th scope="row"><label for="ngoCharity_flickr">Flickr</label></th>
-						<td>
-						<input id="ngoCharity_flickr" name="ngoCharity_options[ngoCharity_flickr]" type="text" value="<?php echo esc_url($settings['ngoCharity_flickr']); ?>" />
-						</td>
-						</tr> -->
-
 						<tr><th scope="row"><label for="ngoCharity_vimeo">Vimeo</label></th>
 						<td>
 						<input id="ngoCharity_vimeo" name="ngoCharity_options[ngoCharity_vimeo]" type="text" value="<?php echo esc_url($settings['ngoCharity_vimeo']); ?>" />
 						</td>
 						</tr>
-
-						<!-- <tr><th scope="row"><label for="ngoCharity_stumbleupon">Stumbleupon</label></th>
-						<td>
-						<input id="ngoCharity_stumbleupon" name="ngoCharity_options[ngoCharity_stumbleupon]" type="text" value="<?php echo esc_url($settings['ngoCharity_stumbleupon']); ?>" />
-						</td>
-						</tr> -->
-
-						<!-- <tr><th scope="row"><label for="ngoCharity_instagram">Instagram</label></th>
-						<td>
-						<input id="ngoCharity_instagram" name="ngoCharity_options[ngoCharity_instagram]" type="text" value="<?php if(isset($settings['ngoCharity_instagram'])) { echo esc_url($settings['ngoCharity_instagram']); } ?>" />
-						</td>
-						</tr>
-
-						<tr><th scope="row"><label for="ngoCharity_sound_cloud">Sound Cloud</label></th>
-						<td>
-						<input id="ngoCharity_sound_cloud" name="ngoCharity_options[ngoCharity_sound_cloud]" type="text" value="<?php if(isset($settings['ngoCharity_sound_cloud'])) { echo esc_url($settings['ngoCharity_sound_cloud']); } ?>" />
-						</td>
-						</tr> -->
-
-						<!-- <tr><th scope="row"><label for="ngoCharity_skype">Skype</label></th>
-						<td>
-						<input id="ngoCharity_skype" name="ngoCharity_options[ngoCharity_skype]" type="text" value="<?php esc_attr_e($settings['ngoCharity_skype']); ?>" />
-						</td>
-						</tr>
-
-						<tr><th scope="row"><label for="ngoCharity_skype">Tumblr</label></th>
-						<td>
-						<input id="ngoCharity_tumblr" name="ngoCharity_options[ngoCharity_tumblr]" type="text" value="<?php esc_attr_e($settings['ngoCharity_tumblr']); ?>" />
-						</td>
-						</tr>
-
-						<tr><th scope="row"><label for="ngoCharity_skype">Myspace</label></th>
-						<td>
-						<input id="ngoCharity_myspace" name="ngoCharity_options[ngoCharity_myspace]" type="text" value="<?php esc_attr_e($settings['ngoCharity_myspace']); ?>" />
-						</td>
-						</tr> -->
 
 						<tr><th scope="row"><label for="ngoCharity_rss">RSS</label></th>
 						<td>
