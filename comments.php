@@ -17,7 +17,8 @@ if ( post_password_required() ) {
     return;
 }
 ?>
-
+<div class="fb-comments" data-href="<?php echo get_the_permalink(); ?>" data-numposts="10" data-colorscheme="light" width="100%"></div>
+<?php /*
 <section class="comment-area">
     <?php if ( have_comments() ) : ?>
         <div class="heading">
@@ -63,3 +64,5 @@ if ( post_password_required() ) {
     comment_form();
 ?>
 </section>
+*/
+?>
