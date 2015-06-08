@@ -25,7 +25,7 @@ function ngoCharity_contact_form_html()
 				<li class="row-fluid">
 					<div class="span12">
 						<label>Email <span class="require">(Required)</span></label>
-						<input type="text" class="input-block-level" name="ngoCharity_contact_email" value="<?php echo $contact_email; ?>" placeholder="Type your valid email address">
+						<input type="email" class="input-block-level" name="ngoCharity_contact_email" value="<?php echo $contact_email; ?>" placeholder="Type your valid email address">
 					</div>
 				</li>
 				<li class="row-fluid">
@@ -78,7 +78,7 @@ function ngoCharity_sendMail() {
  		//allowing html content
 
         // get the blog administrator's email address
-        $to = $ngoCharity_settings['contactEmail'];
+        $to = $ngoCharity_settings['contact_email_address'];
 
         $headers[] = 'Content-Type: text/html; charset=UTF-8';
         $headers[] = "From: $contact_name <$contact_email>" . "\r\n";

@@ -65,7 +65,7 @@ $ngoCharity_options = array(
 	'show_social_header'=>'',
 	'show_social_footer'=>'',
 
-	'contactEmai'=> '',
+	'contact_email_address'=> '',
 	'contactGoogleMap' => '',
 
 	'notification_text'=>'',
@@ -591,14 +591,14 @@ function ngoCharity_theme_options_page() {
 						<tr>
 							<th scope="row"><label for="google_map_iframe"><?php _e('Google Map Iframe','ngoCharity'); ?></label></th>
 							<td>
-								<textarea id="google_map_iframe" name="ngoCharity_options[contactGoogleMap]" rows="5" cols="30" placeholder="<?php _e('Copy and paste google map ifrmae embed code','ngoCharity')?>"><?php echo wp_kses_post($settings['contactGoogleMap']); ?></textarea><br />
+								<textarea id="google_map_iframe" name="ngoCharity_options[contactGoogleMap]" rows="5" cols="30" placeholder="<?php _e('Copy and paste google map ifrmae embed code','ngoCharity')?>"><?php echo $settings['contactGoogleMap']; ?></textarea><br />
 			                    <em class="f13"><?php _e('Leave blank if you don\'t want to show. ','ngoCharity'); ?></em> 
 		                    </td>
 	                    </tr>
 	                    <tr>
-	                    	<th scope="row"><label for="ngoCharity_contactEmail">Contact Email Address</label></th>
+	                    	<th scope="row"><label for="ngoCharity_contact_email_address">Contact Email Address</label></th>
 							<td>
-								<input id="ngoCharity_contactEmail" name="ngoCharity_options[contactEmail]" type="email" value="<?php echo esc_url($settings['contactEmail']); ?>" />
+								<input id="ngoCharity_contact_email_address" name="ngoCharity_options[contact_email_address]" type="email" value="<?php echo $settings['contact_email_address']; ?>" />
 							</td>
 	                    </tr>
 					</table>
@@ -658,9 +658,6 @@ function ngoCharity_validate_options( $input ) {
     $input['post_readmore_text'] = sanitize_text_field( $input['post_readmore_text'] );
 
     $input['notification_text'] = sanitize_text_field( $input['notification_text'] );
-    $input['contactGoogleMap'] = sanitize_text_field( $input['contactGoogleMap'] );
-    $input['contactEmail'] = sanitize_email( $input['contactEmail'] );
-
 
     // We select the previous value of the field, to restore it in case an invalid entry has been given
 	$prev = $settings['featured_post1'];
@@ -711,37 +708,13 @@ function ngoCharity_validate_options( $input ) {
 	};
 	if( isset( $input[ 'ngoCharity_youtube' ] ) ) {
 		$input[ 'ngoCharity_youtube' ] = esc_url_raw( $input[ 'ngoCharity_youtube' ] );
-	};
-	// if( isset( $input[ 'ngoCharity_pinterest' ] ) ) {
-	// 	$input[ 'ngoCharity_pinterest' ] = esc_url_raw( $input[ 'ngoCharity_pinterest' ] );
-	// };
+	}
 	if( isset( $input[ 'ngoCharity_linkedin' ] ) ) {
 		$input[ 'ngoCharity_linkedin' ] = esc_url_raw( $input[ 'ngoCharity_linkedin' ] );
 	};
-	// if( isset( $input[ 'ngoCharity_flickr' ] ) ) {
-	// 	$input[ 'ngoCharity_flickr' ] = esc_url_raw( $input[ 'ngoCharity_flickr' ] );
-	// };
 	if( isset( $input[ 'ngoCharity_vimeo' ] ) ) {
 		$input[ 'ngoCharity_vimeo' ] = esc_url_raw( $input[ 'ngoCharity_vimeo' ] );
 	};
-	// if( isset( $input[ 'ngoCharity_stumbleupon' ] ) ) {
-	// 	$input[ 'ngoCharity_stumbleupon' ] = esc_url_raw( $input[ 'ngoCharity_stumbleupon' ] );
-	// };
-	// if( isset( $input[ 'ngoCharity_instagram' ] ) ) {
-	// 	$input[ 'ngoCharity_instagram' ] = esc_url_raw( $input[ 'ngoCharity_instagram' ] );
-	// };
-	// if( isset( $input[ 'ngoCharity_sound_cloud' ] ) ) {
-	// 	$input[ 'ngoCharity_sound_cloud' ] = esc_url_raw( $input[ 'ngoCharity_sound_cloud' ] );
-	// };
-	// if( isset( $input[ 'ngoCharity_skype' ] ) ) {
-	// 	$input[ 'ngoCharity_skype' ] = esc_attr( $input[ 'ngoCharity_skype' ] );
-	// };
-	// if( isset( $input[ 'ngoCharity_tumblr' ] ) ) {
-	// 	$input[ 'ngoCharity_tumblr' ] = esc_url_raw( $input[ 'ngoCharity_tumblr' ] );
-	// };
-	// if( isset( $input[ 'ngoCharity_myspace' ] ) ) {
-	// 	$input[ 'ngoCharity_myspace' ] = esc_url_raw( $input[ 'ngoCharity_myspace' ] );
-	// };
 	if( isset( $input[ 'ngoCharity_rss' ] ) ) {
 		$input[ 'ngoCharity_rss' ] = esc_url_raw( $input[ 'ngoCharity_rss' ] );
 	};
@@ -752,6 +725,21 @@ function ngoCharity_validate_options( $input ) {
     if( isset( $input[ 'footer_copyright' ] ) ) {
 	   $input[ 'footer_copyright' ] = wp_kses_post( $input[ 'footer_copyright' ] );
     }
+
+    if( isset( $input[ 'contactGoogleMap' ] ) ) {
+    	$allowed_tags=array(
+    		'iframe' => array(
+    			'src' => array(),
+    			'height' => array(),
+    			'width' => array()
+    			)
+    		);
+	   $input[ 'contactGoogleMap' ] = wp_kses( $input[ 'contactGoogleMap' ],$allowed_tags );
+    }
+
+    if( isset( $input[ 'contact_email_address' ] ) ) {
+		$input[ 'contact_email_address' ] = sanitize_email( $input['contact_email_address'] );
+	};
     
 	return $input;
 }
