@@ -52,3 +52,5 @@
 <?php if ( is_active_sidebar( 'widget_right' ) ) : ?>
   <?php dynamic_sidebar( 'widget_right' ); ?>
 <?php endif; ?>
+
+<!-- <br style="margin-bottom: 10px;" > -->

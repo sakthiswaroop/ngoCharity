@@ -211,3 +211,55 @@ blockquote.right {
 .textwidget {}
 .widget_text {}
 .textwidget p {}
+
+/*Buttons*/
+
+.btn-donate{
+	color: #534D4D;
+	padding: 11px 11px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/*Search*/
+.user-controls{
+	z-index: 100 !important;
+}
+
+
+/*Front page*/
+.front-quote{
+	margin-top: -30px;
+	margin-bottom: 30px;
+	padding: 20px 35px 12px 14px;
+	color: #8C8C8C;
+	background-color: #EAEAEA;
+	line-height: 1.4;
+}
+
+.front-quote blockquote{
+	margin: 0px 0px 10px;
+	position: relative;
+	border-left: 0px none;
+	background: transparent none repeat scroll 0% 0%;
+	font-size: 25px;
+	text-align: center;
+}
+
+.front-about{
+	margin-top: -30px;
+	margin-bottom: 40px;
+	padding: 20px 35px 12px 14px;
+	line-height: 17px;
+	color: #8C8C8C;
+	background-color: #FFFFFF;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #F2F2F2;
+}
+
+.front-about .caption{
+	font-size: 16px;
+	font-size: 17px;
+	font-weight: bold;
+	color: #8C8C8C;
+}
