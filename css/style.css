@@ -40,7 +40,9 @@
 .logo a,
 .logo img {
 	display:block;
-	float:left
+	float:left;
+	width: 215px ;
+	height: 45px;
 }
 .logo .slogan {
 	padding-left:10px;

@@ -31,17 +31,6 @@ function ngoCharity_setup()
     add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 604, 270, true );
 
-    // This theme uses its own gallery styles.
-    // add_filter( 'use_default_gallery_style', '__return_false' );
-
-    //add custome header image
-    $imageArgs = array(
-        'height'        => 43,
-        'uploads'       => true,
-        'default-image' => get_template_directory_uri() . '/images/logo.png',
-    );
-    add_theme_support( 'custom-header', $imageArgs );
-
     //enable shortcode
     add_filter('widget_text', 'do_shortcode');
 }
@@ -121,8 +110,12 @@ add_action( 'wp_enqueue_scripts', 'ngo_charity_scripts' );
 /**
 * Implement the Theme Option feature.
 */
-
 require get_template_directory() . '/inc/admin-panel/theme-options.php';
+
+/**
+* Implement Custom header
+*/
+require get_template_directory() . '/inc/custom-header.php';
 
 /*
 * Implementing custom meta box
