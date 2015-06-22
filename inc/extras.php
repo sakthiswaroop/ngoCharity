@@ -5,8 +5,7 @@
 *@package NgoCharity
 */
 
-function the_breadcrumb () {
-     
+function the_breadcrumb () {     
     // Settings
     $separator  = '&gt;';
     $id         = 'breadcrumb';
@@ -131,8 +130,7 @@ function the_breadcrumb () {
             // Search results page
             echo '<li class="item-current item-current-' . get_search_query() . '"><a href="'.get_search_link().'">Search</a></li>';
          
-        } elseif ( is_404() ) {
-             
+        } elseif ( is_404() ) {             
             // 404 page
             echo '<li>' . 'Error 404' . '</li>';
         }

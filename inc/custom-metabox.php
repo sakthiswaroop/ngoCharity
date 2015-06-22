@@ -14,20 +14,21 @@ add_action('add_meta_boxes', 'ngoCharity_add_custom_box');
 function ngoCharity_add_custom_box()
 {    
     add_meta_box(
-                 'ngoCharity_event_details', // $id
-                 'Event Details', // $title
-                 'ngoCharity_event_details_callback', // $callback
-                 'post', // $page
-                 'side', // $context
-                 'high'); // $priority
-
+        'ngoCharity_event_details', // $id
+        'Event Details', // $title
+        'ngoCharity_event_details_callback', // $callback
+        'post', // $page
+        'side', // $context
+        'high' // $priority
+    ); 
     add_meta_box(
-                 'ngoCharity_gallery_url', // $id
-                 'Gallery Link', // $title
-                 'ngoCharity_gallery_url_callback', // $callback
-                 'post', // $page
-                 'side', // $context
-                 'high'); // $priority
+        'ngoCharity_gallery_url', // $id
+        'Gallery Link', // $title
+        'ngoCharity_gallery_url_callback', // $callback
+        'post', // $page
+        'side', // $context
+        'high' // $priority
+    );
 }
 
 function event_custombox_scripts($hook) {
@@ -36,7 +37,6 @@ function event_custombox_scripts($hook) {
     }
 
     wp_enqueue_style( 'datetimepicker css',get_template_directory_uri().'/lib/datetimepicker/jquery.datetimepicker.css');
-
     wp_enqueue_script( 'datetimepicker js', get_template_directory_uri().'/lib/datetimepicker/jquery.datetimepicker.js', array( 'jquery' ) );
 }
 add_action( 'admin_enqueue_scripts', 'event_custombox_scripts' );
