@@ -118,18 +118,18 @@
 	clear: both;
 }
 
-#accesspresslite_media_image { 
+#ngoCharity_media_image { 
 	width: 32px; 
 	height: 32px; 
 	margin-top: 20px; 
 	position: relative;
 }
 
-#accesspresslite_media_image img { 
+#ngoCharity_media_image img { 
 	width: 100%
 }
 
-#accesspresslite_fav_icon_remove{ 
+#ngoCharity_fav_icon_remove{ 
 	background: url(../images/close.png) no-repeat; 
 	height: 16px; 
 	width: 16px; 
@@ -150,30 +150,30 @@
 	width: 95%
 }
 
-.accesspresslite-header{ 
-	background: #333; 
+.ngoCharity-header{ 
+	/*background: #333; 
 	height: 100px; 
 	border-radius:15px 15px 0 0; 
 	border-bottom:5px solid #01AEFD;
 	color: #FFF;
 	margin-bottom: 20px;
-	position: relative;
+	position: relative;*/
 }
 
-.accesspresslite-header .accesspresslite_title{ 
+.ngoCharity-header .ngoCharity_title{ 
 	font-size: 24px;
-	color: #FFF;
+	/*color: #FFF;
 	line-height: 100px;
 	padding:0 20px 0 0;
-	float:right;
+	float:right;*/
 }
 
-.accesspresslite-logo{ 
+.ngoCharity-logo{ 
 	float: left;  
 	width: auto; 
 	padding: 15px 0 0 20px;
 }
-.accesspresslite-logo img{ 
+.ngoCharity-logo img{ 
 	width: auto;
 	height: 68px;
 }
