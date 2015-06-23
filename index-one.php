@@ -4,6 +4,7 @@ global $ngoCharity_options;
 $ngoCharity_settings = get_option( 'ngoCharity_options', $ngoCharity_options );
 
 $cat_event = $ngoCharity_settings['event_cat'];
+$about_id = $ngoCharity_settings['about_post'];
 ?>
 <div class="front-quote">
     <div class="container">
@@ -18,8 +19,11 @@ $cat_event = $ngoCharity_settings['event_cat'];
 	<div class="container">
 		<h2><strong>Rural Health Care Center</strong><br>
 		<span class="caption">Dolakha, Nepal</span></h2>
-
-		<p>We are group of enthusiast people thriving to help</p>
+		<div class="content">
+			<?php $about = get_post($about_id, ARRAY_A) ?>
+			<p><?php echo ngoCharity_excerpt($about['post_content'], 500 );  ?></p>
+			<a href="<?php echo get_permalink($about_id) ?>" class="readmore">Click here to know more!</a>
+		</div>
 	</div>
 </div>
 

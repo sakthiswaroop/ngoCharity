@@ -263,3 +263,13 @@ blockquote.right {
 	font-weight: bold;
 	color: #8C8C8C;
 }
+
+.front-about .content{
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.front-about .content a{
+	font-size: 15px;
+	font-weight: bold;
+}
