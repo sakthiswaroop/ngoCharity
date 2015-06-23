@@ -65,7 +65,7 @@ $about_id = $ngoCharity_settings['about_post'];
 			         $args = array(
 					'post__not_in' => array($featuredId),
 					'cat' => $cat_event,
-				        'posts_per_page'=> 3
+				    'posts_per_page'=> $ngoCharity_settings['show_event_number']
 				);
 				query_posts($args);
 			        if ( have_posts() ) : ?>
