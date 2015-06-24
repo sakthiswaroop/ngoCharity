@@ -273,3 +273,13 @@ blockquote.right {
 	font-size: 15px;
 	font-weight: bold;
 }
+
+
+/*********404 Error Css ***********/
+.not-found{
+	text-align: center;
+	font-size: 16px;
+	color: #938E8E;
+	margin-bottom: 20px;
+}
+

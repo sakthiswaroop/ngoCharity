@@ -132,7 +132,7 @@ function the_breadcrumb () {
          
         } elseif ( is_404() ) {             
             // 404 page
-            echo '<li>' . 'Error 404' . '</li>';
+            echo '<li> <a href=""> '. '404' . '</a></li>';
         }
          
     }

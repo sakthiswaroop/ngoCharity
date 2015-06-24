@@ -116,6 +116,9 @@
                         elseif ( is_tax( 'post_format', 'post-format-chat' ) ) :
                             _e( 'Chats', 'ngoCharity' );
 
+                        elseif ( is_404() ) :
+                            _e( 'Page not found', 'ngoCharity' );
+
                         else :
                             _e( 'Archives', 'ngoCharity' );
 
