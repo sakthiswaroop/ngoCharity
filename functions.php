@@ -180,4 +180,3 @@ function ngoCharity_recommend_plugin() {
     tgmpa( $plugins);
 }
 ?>
-
