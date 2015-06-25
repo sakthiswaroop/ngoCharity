@@ -162,16 +162,6 @@ function ngoCharity_recommend_plugin() {
             'required'           => true,
         ),
         array(
-            'name'               => 'Newsletter - Manage your site subscriptions with ease',
-            'slug'               => 'newsletter',
-            'required'           => true,
-        ),
-        array(
-            'name'               => 'Php code widget',
-            'slug'               => 'php-code-widget',
-            'required'           => true,
-        ), 
-        array(
             'name'               => 'Visual Editor - Black Studio Tiny Mice Widget',
             'slug'               => 'black-studio-tinymce-widget',
             'required'           => true,
