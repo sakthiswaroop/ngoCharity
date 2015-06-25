@@ -27,25 +27,26 @@
         <?php endwhile;
         ?>
     </div><!-- events-->
+    <script type="text/javascript">
+        jQuery(document).ready(function(e) {
+            "use strict";
+            var counter = "<?php echo $ddt; ?>";
+
+            if (e(".count-down").length !== 0) {
+                e(".count-down").countdown({
+                    // timestamp: (new Date).getTime() + 10 * 24 * 60 * 60 * 1e3
+                    timestamp:  counter * 1e3
+                })
+            }
+        })
+    </script>
     <?php 
     endif;
     wp_reset_query();   
 ?>
 
 
-<script type="text/javascript">
-    jQuery(document).ready(function(e) {
-        "use strict";
-        var counter = "<?php echo $ddt; ?>";
 
-        if (e(".count-down").length !== 0) {
-            e(".count-down").countdown({
-                // timestamp: (new Date).getTime() + 10 * 24 * 60 * 60 * 1e3
-                timestamp:  counter * 1e3
-            })
-        }
-    })
-</script>
 
 <!-- dynamic widget based on  widget bar -->
 
