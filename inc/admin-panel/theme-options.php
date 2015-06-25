@@ -24,13 +24,18 @@ $ngoCharity_options = array(
 	//Site Setup
 	'favicon'=> '',	
 	'header_text'=>__('Call us : 98XXXXXXXX','ngoCharity'),
-	'about_post' => '',
-	'show_event_number' => '3',	
 	'footer_copyright' => get_bloginfo('name').' - All rights reserved',
 
 	// Basic Settings
 	'post_readmore_text' => __('Read More','ngoCharity'),
 	'post_char_length' => '500',
+
+	//Front page setup
+	'donate_quote'=>'“It\'s not how much we give but how much love we put into giving.” - Mother Teresa',
+	'about_post' => '',
+	'donate_box' => '',
+	'donate_paypal_btn' => '',
+	'show_event_number' => '3',
 
 	//Category Setup	
 	'event_cat' => '',
@@ -60,6 +65,11 @@ $ngoCharity_options = array(
 	//Contact Setup
 	'contact_email_address'=> '',
 	'contactGoogleMap' => '',
+
+	//Facebook Sdk setup
+	'fb_app_id'=>'',
+	'fb_comment'=>'',
+	'fb_comment_moderator'=>'',
 );
 
 function ngoCharity_register_settings() {
@@ -163,10 +173,12 @@ function ngoCharity_theme_options_page() {
 		// Shows all the tabs of the theme options ?>
 		<div class="nav-tab-wrapper">
 			<a id="site-setup-tab" class="nav-tab nav-tab-active" href="#site-setup"><?php _e('Site Setup','ngoCharity'); ?></a>
+			<a id="front-page-tab" class="nav-tab nav-tab" href="#front-page-setup"><?php _e('Front Page Setup','ngoCharity'); ?></a>
 			<a id="category-setup-tab" class="nav-tab" href="#category-setup"><?php _e('Category Setup','ngoCharity'); ?></a>
 			<a id="slider-settings-tab" class="nav-tab" href="#slider-settings"><?php _e('Silder Settings','ngoCharity'); ?></a>
 			<a id="social-setup-tab" class="nav-tab" href="#social-setup"><?php _e('Social Setup','ngoCharity'); ?></a>
 			<a id="contact-setup-tab" class="nav-tab" href="#contact-setup"><?php _e('Contact Setup','ngoCharity'); ?></a>
+			<a id="fb-sdk-setup-tab" class="nav-tab" href="#fb-sdk-setup"><?php _e('Facebook Sdk Setup','ngoCharity'); ?></a>
 		</div>
 
 		<div id="optionsframework-metabox" class="metabox-holder clearfix">
@@ -215,27 +227,6 @@ function ngoCharity_theme_options_page() {
 				                    <em class="f13"><?php _e('Html content allowed','ngoCharity'); ?></em> 
 			                    </td>
 		                    </tr>
-		                    <tr>
-								<th scope="row"><label for="about_post"><?php _e('Select About Us post','ngoCharity'); ?></label></th>
-								<td>
-									<select id="about_post" name="ngoCharity_options[about_post]">
-										<?php
-										foreach ( $ngoCharity_postpagelist as $single_post ) :
-											$label = $single_post['label']; ?>
-											<option value="<?php esc_attr_e($single_post['value']) ?>" <?php selected( $single_post['value'], $settings['about_post'] ); ?>><?php esc_attr_e($label); ?></option>
-										<?php 
-										endforeach;
-										?>
-									</select>
-								</td>
-							</tr>
-		                    <tr>
-								<th scope="row"><label for="show_event_number"><?php _e('No of Events','ngoCharity'); ?></label></th>
-								<td>
-									<input id="show_event_number" name="ngoCharity_options[show_event_number]" type="text" value="<?php esc_attr_e($settings['show_event_number']); ?>" />
-				                    <em class="f13"><?php _e('No of events to display on front page.','ngoCharity'); ?></em> 
-								</td>
-							</tr>
 							<tr>
 								<th scope="row"><label for="footer_copyright"><?php _e('Footer Text','ngoCharity'); ?></label></th>
 								<td>
@@ -261,8 +252,67 @@ function ngoCharity_theme_options_page() {
 					</div>
 					<!-- End of site setup-->
 
+					<!-- Front Page Setup -->
+					<div id="front-page-setup" class="group" style="display: none;">
+						<table class="form-table">
+							<tr>
+								<th scope="row"><label for="donate_quote"><?php _e('Donate Quote','ngoCharity'); ?></label></th>
+								<td>
+									<textarea id="donate_quote" name="ngoCharity_options[donate_quote]" rows="5" cols="30" placeholder="<?php _e('Write attractive quotes for donation','ngoCharity')?>"><?php echo wp_kses_post($settings['donate_quote']); ?></textarea><br />
+				                    <em class="f13"><?php _e('Html content allowed','ngoCharity'); ?></em> 
+			                    </td>
+		                    </tr>
+
+							<tr><td colspan="2" class="seperator">&nbsp;</td></tr>							
+
+							<tr>
+								<th scope="row"><label for="about_post"><?php _e('Select About Us post','ngoCharity'); ?></label></th>
+								<td>
+									<select id="about_post" name="ngoCharity_options[about_post]">
+										<?php
+										foreach ( $ngoCharity_postpagelist as $single_post ) :
+											$label = $single_post['label']; ?>
+											<option value="<?php esc_attr_e($single_post['value']) ?>" <?php selected( $single_post['value'], $settings['about_post'] ); ?>><?php esc_attr_e($label); ?></option>
+										<?php 
+										endforeach;
+										?>
+									</select>
+								</td>
+							</tr>
+
+							<tr><td colspan="2" class="seperator">&nbsp;</td></tr>							
+
+							<tr>
+								<th scope="row"><label for="donate_box"><?php _e('Donate Box','ngoCharity'); ?></label></th>
+								<td>
+									<textarea id="donate_box" name="ngoCharity_options[donate_box]" rows="5" cols="30" placeholder="<?php _e('Write message to display on donation box','ngoCharity')?>"><?php echo wp_kses_post($settings['donate_box']); ?></textarea><br />
+				                    <em class="f13"><?php _e('Html content allowed. Write something attractive to make donors interested.','ngoCharity'); ?></em> 
+			                    </td>
+		                    </tr>
+		                    <tr>
+								<th scope="row"><label for="donate_paypal_btn"><?php _e('Donate Paypal Button','ngoCharity'); ?></label></th>
+								<td>
+									<textarea id="donate_paypal_btn" name="ngoCharity_options[donate_paypal_btn]" rows="5" cols="30"><?php echo wp_kses_post($settings['donate_paypal_btn']); ?></textarea><br />
+				                    <em class="f13"><?php _e('Copy and paste only hidden input tags from Paypal donate button code snippet.','ngoCharity'); ?></em> 
+			                    </td>
+		                    </tr>
+
+							<tr><td colspan="2" class="seperator">&nbsp;</td></tr>							
+
+		                    <tr>
+								<th scope="row"><label for="show_event_number"><?php _e('No of Events','ngoCharity'); ?></label></th>
+								<td>
+									<input id="show_event_number" name="ngoCharity_options[show_event_number]" type="text" value="<?php esc_attr_e($settings['show_event_number']); ?>" />
+				                    <em class="f13"><?php _e('No of events to display on front page.','ngoCharity'); ?></em> 
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- end of Front Page Setup -->
+
+
 					<!-- Category Setup -->
-					<div id="category-setup" class="group">
+					<div id="category-setup" class="group" style="display: none;">
 						<table class="form-table">
 							<tr>
 								<th scope="row"><label for="blog_cat"><?php _e('Blog Category','ngoCharity'); ?></label></th>
@@ -519,6 +569,32 @@ function ngoCharity_theme_options_page() {
 					</div>
 					<!-- End of Contacts Setup-->
 
+					<!-- Facebook Sdk Setup-->
+					<div id="fb-sdk-setup" class="group" style="display: none;">
+						<table class="form-table">
+							<tr>
+								<th scope="row"><label for="fb_app_id">App ID</label></th>
+								<td>
+									<input id="fb_app_id" name="ngoCharity_options[fb_app_id]" type="text" value="<?php echo $settings['fb_app_id']; ?>" />
+								</td>
+							</tr>
+							<tr>
+								<th><label for="fb_comment"><?php _e('Facebook Comment Plugin','ngoCharity'); ?></label></th>
+								<td>
+									<input type="checkbox" id="fb_comment" name="ngoCharity_options[fb_comment]" value="1" <?php checked( true, $settings['fb_comment'] ); ?> />
+									<label for="fb_comment"><?php _e('Check to enable','ngoCharity'); ?></label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><label for="fb_comment_moderator">Comment Moderator</label></th>
+								<td>
+									<input id="fb_comment_moderator" name="ngoCharity_options[fb_comment_moderator]" type="text" value="<?php echo $settings['fb_comment_moderator']; ?>" />
+				                    <em class="f13"><?php _e('Separate multiple moderators with comma. ','ngoCharity'); ?></em> 
+								</td>
+							</tr>
+						</table>
+					</div>
+
 					<div id="optionsframework-submit">
 						<input type="submit" class="button-primary" value="<?php esc_attr_e('Save Options','ngoCharity'); ?>" />
 					</div>
@@ -539,7 +615,6 @@ function ngoCharity_validate_options( $input ) {
 
 	// site setup validation
     $input['post_readmore_text'] = sanitize_text_field( $input['post_readmore_text'] );
-    $input['about_post'] = wp_filter_nohtml_kses( $input['about_post'] );
 
     if( isset( $input[ 'header_text' ] ) ) {
 	   $input[ 'header_text' ] = wp_kses_post( $input[ 'header_text' ] );
@@ -556,6 +631,23 @@ function ngoCharity_validate_options( $input ) {
             $input['post_char_length'] = absint($input['post_char_length']);
         }
     }
+
+
+    // facebook sdk setup
+    if( isset( $input[ 'donate_quote' ] ) ) {
+	   $input[ 'donate_quote' ] = wp_kses_post( $input[ 'donate_quote' ] );
+    }
+
+    $input['about_post'] = wp_filter_nohtml_kses( $input['about_post'] );
+
+    if( isset( $input[ 'donate_box' ] ) ) {
+	   $input[ 'donate_box' ] = wp_kses_post( $input[ 'donate_box' ] );
+    }
+
+    if( isset( $input[ 'donate_paypal_btn' ] ) ) {
+	   $input[ 'donate_paypal_btn' ] = wp_kses_post( sanitize_text_field($input[ 'donate_paypal_btn' ]) );
+    }
+
     if (!isset( $input['show_event_number'] ) || empty( $input['show_event_number'] )){
        	$input['show_event_number']= "3";
     }else{
@@ -563,6 +655,7 @@ function ngoCharity_validate_options( $input ) {
             $input['show_event_number'] = absint($input['show_event_number']);
         }
     }
+
 
 	// category setup validation
     $input['blog_cat'] = wp_filter_nohtml_kses( $input['blog_cat'] );
@@ -622,6 +715,31 @@ function ngoCharity_validate_options( $input ) {
     if( isset( $input[ 'contact_email_address' ] ) ) {
 		$input[ 'contact_email_address' ] = sanitize_email( $input['contact_email_address'] );
 	};
+
+
+	//fb sdk setup validation
+	// We select the previous value of the field, to restore it in case an invalid entry has been given
+    if (!isset( $input['fb_app_id'] ) || empty( $input['fb_app_id'] ) ){
+        $input['fb_app_id']= "";
+    }else{
+    	if(intval($input['fb_app_id'])){
+            $input['fb_app_id'] = absint($input['fb_app_id']);
+        }
+    }
+
+    if ( ! isset( $input['fb_comment'] ) )
+		$input['fb_comment'] = null;
+	$input['fb_comment'] = ( $input['fb_comment'] == 1 ? 1 : 0 );
+
+
+    // We select the previous value of the field, to restore it in case an invalid entry has been given
+    if (!isset( $input['fb_comment_moderator'] ) || empty( $input['fb_comment_moderator'] ) ){
+        $input['fb_comment_moderator']= "";
+    }else{
+    	if(intval($input['fb_comment_moderator'])){
+            $input['fb_comment_moderator'] = absint($input['fb_comment_moderator']);
+        }
+    }
     
 	return $input;
 }

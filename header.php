@@ -1,3 +1,8 @@
+<?php
+    global $ngoCharity_options;
+    $ngoCharity_settings = get_option( 'ngoCharity_options', $ngoCharity_options );
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,25 +12,21 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta property="fb:app_id" content="1664420240444578" />
+    <meta property="fb:app_id" content="<?php echo $ngoCharity_settings['fb_app_id'] ?>" />
     <?php wp_head(); ?>
 </head>
 
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1664420240444578";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var app_id = "<?php echo $ngoCharity_settings['fb_app_id'] ?>";
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId="+app_id;
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
-
-<?php
-    global $ngoCharity_options;
-    $ngoCharity_settings = get_option( 'ngoCharity_options', $ngoCharity_options );
-?>
     <div class="wrap">
         <div class="tp-bar">
             <div class="container">

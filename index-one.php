@@ -9,8 +9,12 @@ $about_id = $ngoCharity_settings['about_post'];
 <div class="front-quote">
     <div class="container">
 		<blockquote>
-          	“It's not how much we give but how much love we put into giving.” - <strong><em>Mother Teresa</em></strong>
-          	&emsp;<a href="#" class="btn btn-donate">Donate Now</a>
+          	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          		<?php echo $ngoCharity_settings['donate_quote']; ?>&emsp;
+          		<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="SDKZYWTX9PXTN">
+          		<button type="submit" name="submit" class="btn btn-donate">Donate Now</button>
+          	</form>
         </blockquote>
     </div>
 </div>
@@ -86,12 +90,14 @@ $about_id = $ngoCharity_settings['about_post'];
 		<div class="span3">
 			<div class="donate">
 			  	<h2>Donate <strong>Now</strong></h2>
-			  	<div class="donate-box">
-			    	<form method="post" action="http://www.extracoding.com/demo/html/help/index.html">
-				      	<div class="donate-detail">
-				        	<p>To help us people of rural areas </p>
-					    </div><!-- donate-detail ends -->
-					    <input type="submit" class="btn btn-donate" value="Donate Now">
+			  	<div class="donate-box">          			
+		    	   	<div class="donate-detail">
+			        	<p><?php echo $ngoCharity_settings['donate_box'] ?> </p>
+				    </div><!-- donate-detail ends -->
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+					    <input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="SDKZYWTX9PXTN">
+					    <input type="submit" name="submit" class="btn btn-donate" value="Donate Now">
 				    </form>
 			  	</div><!-- donate-box ends -->
 			</div><!-- donate ends -->
@@ -101,6 +107,3 @@ $about_id = $ngoCharity_settings['about_post'];
 		</div>
 	</div>
 </div><!-- /container -->
-
-
-
