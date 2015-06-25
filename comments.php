@@ -17,8 +17,17 @@ if ( post_password_required() ) {
     return;
 }
 ?>
+
+<?php 
+global $ngoCharity_options;
+$ngoCharity_settings = get_option( 'ngoCharity_options', $ngoCharity_options );
+
+if($ngoCharity_settings['fb_comment']):
+?>
 <div class="fb-comments" data-href="<?php echo get_the_permalink(); ?>" data-numposts="10" data-colorscheme="light" width="100%"></div>
-<?php /*
+
+<?php
+else: ?>
 <section class="comment-area">
     <?php if ( have_comments() ) : ?>
         <div class="heading">
@@ -64,5 +73,5 @@ if ( post_password_required() ) {
     comment_form();
 ?>
 </section>
-*/
-?>
+
+<?php endif; ?>
