@@ -21,13 +21,20 @@ $about_id = $ngoCharity_settings['about_post'];
 
 <div class="front-about">
 	<div class="container">
-		<h2><strong>Rural Health Care Center</strong><br>
-		<span class="caption">Dolakha, Nepal</span></h2>
-		<div class="content">
-			<?php $about = get_post($about_id, ARRAY_A) ?>
-			<p><?php echo ngoCharity_excerpt($about['post_content'], 500 );  ?></p>
-			<a href="<?php echo get_permalink($about_id) ?>" class="readmore">Click here to know more!</a>
+		<div class="row">
+			<div class="span8" >
+				<h2><strong>Rural Health Care Center</strong><br>
+				<span class="caption">Dolakha, Nepal</span></h2>
+				<div class="content">
+					<?php $about = get_post($about_id, ARRAY_A) ?>
+					<p><?php echo ngoCharity_excerpt($about['post_content'], 500 );  ?></p>
+				</div>
+			</div>
+			<div class="span4">
+				<img src="<?php echo get_bloginfo('template_directory').'/images/ruralgroup.jpg'; ?>">
+			</div>
 		</div>
+		<a href="<?php echo get_permalink($about_id) ?>" class="readmore">Click here to know more!</a>
 	</div>
 </div>
 

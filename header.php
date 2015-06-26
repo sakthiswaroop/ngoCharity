@@ -12,11 +12,15 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta property="fb:app_id" content="<?php echo $ngoCharity_settings['fb_app_id'] ?>" />
+    <?php if($ngoCharity_settings['fb_app_id']) { ?> 
+    <meta property="fb:app_id" content="<?php echo $ngoCharity_settings['fb_app_id']; ?>" />
+    <?php } ?>
     <?php wp_head(); ?>
 </head>
 
 <body>
+    <!-- loads facebook sdk  -->
+    <?php if($ngoCharity_settings['fb_app_id']) { ?>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
         var app_id = "<?php echo $ngoCharity_settings['fb_app_id'] ?>";
@@ -26,6 +30,7 @@
         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId="+app_id;
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+    <?php } ?>
 
     <div class="wrap">
         <div class="tp-bar">

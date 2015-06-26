@@ -192,13 +192,16 @@ blockquote.right {
 	margin-bottom: 0px;
 	font-size: 14px;
 	line-height: 20px;
-	color: #000;
+	color: #3E3C3C;
 	text-align: center;
 	vertical-align: middle;
 	cursor: pointer;
 	background-color: #EBB135;
 	border-radius: 3px;
 	border: none;
+}
+#searchform #searchsubmit:hover{
+	color: #000;
 }
 .widget_search {
 
@@ -272,6 +275,9 @@ blockquote.right {
 .front-about .content a{
 	font-size: 15px;
 	font-weight: bold;
+}
+.front-about img{
+
 }
 
 
